@@ -9,7 +9,9 @@ const Parcel = props => {
 
   AssignButton =
     props.status === "WAITING" && props.canAssignParcel ? (
-      <Button>Assign now</Button>
+      <Button color="primary" onClick={() => console.log("Assign now")}>
+        Assign now
+      </Button>
     ) : null;
 
   let Assignee = null;
@@ -17,6 +19,19 @@ const Parcel = props => {
   Assignee = props.assignee ? (
     <span className="parcel-assignee">{props.assignee} </span>
   ) : null;
+
+  let bikerActionButton = null;
+
+  bikerActionButton =
+    props.status === "ASSIGNED" && props.userRole === "biker" ? (
+      <Button color="primary" onClick={() => console.log("pick up timestamp")}>
+        Enter pick up timestamp
+      </Button>
+    ) : props.status === "PICKED_UP" && props.userRole === "biker" ? (
+      <Button color="primary" onClick={() => console.log("delivery timestamp")}>
+        Enter delivery timestamp
+      </Button>
+    ) : null;
 
   return (
     <div>
@@ -27,6 +42,7 @@ const Parcel = props => {
           direction="row"
           justify="flex-start"
           alignItems="center"
+          item
           xs={12}
           sm={12}
           md={12}
@@ -44,9 +60,12 @@ const Parcel = props => {
           <Grid item xs={12} sm={12} md={5} lg={2}>
             <span className="parcel-status">{props.status} </span>
           </Grid>
-          <Grid item xs={12} sm={12} md={5} lg={3}>
+          <Grid item xs={12} sm={12} md={5} lg={2}>
             {AssignButton}
             {Assignee}
+          </Grid>
+          <Grid item xs={12} sm={12} md={5} lg={2}>
+            {bikerActionButton}
           </Grid>
         </Grid>
       </Paper>
