@@ -4,7 +4,10 @@ import Parcel from "../components/Parcel";
 
 const BikerLayout = props => {
   // TODO This shall be filtered such that the assignee id is equal to the biker id
-  const filteredParcels = props.parcelsArray.filter(parcel => parcel.id < 3);
+  const filteredParcels = props.parcelsArray.filter(
+    parcel =>
+      parcel.assigneeID === props.userData.id && parcel.status === "ASSIGNED"
+  );
 
   const parcelsToDisplay = filteredParcels.map(parcel => {
     return (
@@ -14,6 +17,7 @@ const BikerLayout = props => {
         destination={parcel.destination}
         status={parcel.status}
         assignee={parcel.assignee}
+        userRole={props.userData.role}
       />
     );
   });
@@ -29,9 +33,7 @@ const BikerLayout = props => {
 };
 
 const mapStateToProps = state => {
-  return {
-    parcelsArray: state.parcels
-  };
+  return { parcelsArray: state.parcels, userData: state.userData };
 };
 
 // const mapDispatchToProps = state => {
