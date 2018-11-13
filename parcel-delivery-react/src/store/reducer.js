@@ -7,8 +7,9 @@ const parcelArray = [
     id: 2,
     origin: "Berlin",
     destination: "Hamburg",
-    status: "Delivered",
-    assignee: "Muller"
+    status: "ASSIGNED",
+    assignee: "Muller",
+    assigneeID: 1234
   },
   { id: 3, origin: "Köln", destination: "	Stuttgart", status: "WAITING" },
   {
@@ -16,7 +17,8 @@ const parcelArray = [
     origin: "Dortmund",
     destination: "Essen",
     status: "ASSIGNED",
-    assignee: "David"
+    assignee: "David",
+    assigneeID: 1534
   },
   { id: 5, origin: "Leipzig", destination: "Bremen", status: "WAITING" },
   {
@@ -24,7 +26,8 @@ const parcelArray = [
     origin: "Nürnberg",
     destination: "Munich",
     status: "ASSIGNED",
-    assignee: "Günter"
+    assignee: "Günter",
+    assigneeID: 1722
   },
   { id: 7, origin: "Duisburg", destination: "Munich", status: "WAITING" },
   { id: 8, origin: "Bochum", destination: "Munich", status: "WAITING" },
@@ -33,15 +36,20 @@ const parcelArray = [
     origin: "Dresden",
     destination: "Wuppertal",
     status: "ASSIGNED",
-    assignee: "Hermann"
+    assignee: "Hermann",
+    assigneeID: 1994
   },
   { id: 10, origin: "Bonn", destination: "Munich", status: "WAITING" },
   { id: 11, origin: "Dresden", destination: "Mannheim", status: "WAITING" },
   { id: 12, origin: "Chemnitz", destination: "Munich", status: "WAITING" }
 ];
 
+// TODO the userData shall be filled when user login using the LOGIN action
+const userData = { role: "biker", name: "Muller", id: 1234 };
+
 const initialState = {
-  parcels: parcelArray
+  parcels: parcelArray,
+  userData: userData
 };
 
 // TODO add logged in user data once he login
@@ -55,6 +63,9 @@ const reducer = (state = initialState, action) => {
       return;
 
     case actions.ENTER_DELIVERY_TIMESTAMP:
+      return;
+
+    case actions.LOGIN:
       return;
 
     default:
