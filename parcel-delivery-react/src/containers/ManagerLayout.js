@@ -1,5 +1,5 @@
 import React from "react";
-import Parcel from "./Parcel";
+import Parcel from "../components/Parcel";
 import { connect } from "react-redux";
 
 const ManagerLayout = props => {

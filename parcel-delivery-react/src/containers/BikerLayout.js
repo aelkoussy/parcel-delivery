@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Parcel from "./Parcel";
+import Parcel from "../components/Parcel";
 
 const BikerLayout = props => {
   // TODO This shall be filtered such that the assignee id is equal to the biker id
