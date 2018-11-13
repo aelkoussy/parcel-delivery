@@ -1,0 +1,21 @@
+.parcel-paper {
+  margin: 1em;
+  padding: 2%;
+  vertical-align: middle;
+}
+
+.parcel-origin {
+  color: blue;
+  font-weight: normal;
+}
+.parcel-destination {
+  color: rgb(204, 51, 51);
+  font-weight: normal;
+}
+.parcel-status {
+  color: rgb(142, 11, 11);
+  font-weight: normal;
+}
+.parcel-assignee {
+  margin: 10px;
+}
