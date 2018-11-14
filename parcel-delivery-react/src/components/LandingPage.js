@@ -18,14 +18,14 @@ export default function LandingPage() {
         >
           <Grid item xs={12} sm={12} md={12} lg={5}>
             <Link to="/managers">
-              <Card>
+              <Card style={{ backgroundColor: "aqua" }}>
                 <h2>Managers portal</h2>
               </Card>
             </Link>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={5}>
             <Link to="/bikers">
-              <Card>
+              <Card style={{ backgroundColor: "aqua" }}>
                 <h2>Bikers portal</h2>
               </Card>
             </Link>
