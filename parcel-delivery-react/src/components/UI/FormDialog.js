@@ -1,11 +1,10 @@
-import React from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import React from "react";
 
 export default class FormDialog extends React.Component {
   state = { open: false };
@@ -32,14 +31,16 @@ export default class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">{this.props.title}</DialogTitle>
           <DialogContent>
             <DialogContentText>{this.props.description}</DialogContentText>
-            <TextField
+            {/* <TextField
               autoFocus
               margin="dense"
               id="name"
-              label="Email Address"
+              label={this.props.textFieldLabel}
               type="email"
               fullWidth
-            />
+            /> */}
+            {this.props.inputComponent}
+            {/* we can add here a prop to pass a form component that dispatches some action with callback function  */}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="secondary">
