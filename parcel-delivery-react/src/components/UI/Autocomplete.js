@@ -12,22 +12,6 @@ import { withStyles } from "@material-ui/core/styles";
 // How to use this (by Ahmed Elkoussy)
 // I have added this autocompleteLabel prop to pass a label the autocomplete here
 
-const suggestions = [
-  { label: "Afghanistan" },
-  { label: "Aland Islands" },
-  { label: "Albania" },
-  { label: "Algeria" },
-  { label: "American Samoa" },
-  { label: "Andorra" },
-  { label: "Angola" },
-  { label: "Anguilla" },
-  { label: "Antarctica" },
-  { label: "Antigua and Barbuda" },
-  { label: "Argentina" },
-  { label: "Armenia" },
-  { label: "Aruba" }
-];
-
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
 
@@ -49,8 +33,8 @@ function renderInputComponent(inputProps) {
 }
 
 function renderSuggestion(suggestion, { query, isHighlighted }) {
-  const matches = match(suggestion.label, query);
-  const parts = parse(suggestion.label, matches);
+  const matches = match(suggestion.name, query);
+  const parts = parse(suggestion.name, matches);
 
   return (
     <MenuItem selected={isHighlighted} component="div">
@@ -71,7 +55,7 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
   );
 }
 
-function getSuggestions(value) {
+function getSuggestions(value, suggestions) {
   const inputValue = deburr(value.trim()).toLowerCase();
   const inputLength = inputValue.length;
   let count = 0;
@@ -81,7 +65,7 @@ function getSuggestions(value) {
     : suggestions.filter(suggestion => {
         const keep =
           count < 5 &&
-          suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
+          suggestion.name.slice(0, inputLength).toLowerCase() === inputValue;
 
         if (keep) {
           count += 1;
@@ -92,7 +76,7 @@ function getSuggestions(value) {
 }
 
 function getSuggestionValue(suggestion) {
-  return suggestion.label;
+  return suggestion.name;
 }
 
 const styles = theme => ({
@@ -130,9 +114,12 @@ class IntegrationAutosuggest extends React.Component {
     suggestions: []
   };
 
+  // by Ahmed, get the suggestions array from the props.suggestions passed by the caller
+
   handleSuggestionsFetchRequested = ({ value }) => {
+    console.log(this.props.suggestions);
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: getSuggestions(value, this.props.suggestions)
     });
   };
 
@@ -142,10 +129,12 @@ class IntegrationAutosuggest extends React.Component {
     });
   };
 
+  // added by Ahmed to pass chosen value to parent component
+  passChangeToParent = () => this.props.onValueChosen(this.state.single);
+
   handleChange = name => (event, { newValue }) => {
-    this.setState({
-      [name]: newValue
-    });
+    // by Ahmed: This shall return the chosen value here to the calling parent
+    this.setState({ [name]: newValue }, this.passChangeToParent);
   };
 
   render() {
