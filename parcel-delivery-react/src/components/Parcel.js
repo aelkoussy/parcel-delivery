@@ -18,14 +18,19 @@ const Parcel = props => {
         description="Please type the biker name to assign this parcel to"
         buttonName="Assign now"
         inputComponent={props.assignAutoSelectComponent}
-        dialogSubmitClicked={props.dialogSubmitClicked}
+        dialogSubmitClicked={() => props.dialogSubmitClicked(props.id)}
       />
     ) : null;
 
   let Assignee = null;
 
   Assignee = props.assignee ? (
-    <span className="parcel-assignee">{props.assignee} </span>
+    <div>
+      <span>
+        <i className="material-icons">assignment_ind</i>
+      </span>
+      <span className="parcel-assignee">{props.assignee} </span>
+    </div>
   ) : null;
 
   let bikerActionButton = null;
@@ -36,7 +41,7 @@ const Parcel = props => {
         title="Pickup time"
         description="Please enter the time of pickup"
         buttonName="Enter pickup time"
-        dialogSubmitClicked={props.dialogSubmitPickupTimeClicked}
+        dialogSubmitClicked={() => props.dialogSubmitClicked(props.id)}
         inputComponent={props.choosePickupTimeComponent}
       />
     ) : props.status === "PICKED_UP" && props.userRole === "biker" ? (
@@ -44,7 +49,7 @@ const Parcel = props => {
         title="Delivery time"
         description="Please enter the time of delivery"
         buttonName="Enter delivery time"
-        dialogSubmitClicked={props.dialogSubmitDeliveryTimeClicked}
+        dialogSubmitClicked={() => props.dialogSubmitClicked(props.id)}
         inputComponent={props.chooseDeliveryTimeComponent}
       />
     ) : null;
@@ -52,10 +57,7 @@ const Parcel = props => {
   return (
     <div>
       <CssBaseline />
-      <Paper
-        className="parcel-paper"
-        // style={props.status === "WAITING" ? { backgroundColor: "red" } : null}
-      >
+      <Paper className="parcel-paper">
         <Grid
           container
           direction="row"
@@ -71,13 +73,36 @@ const Parcel = props => {
             <span>Parcel #{props.id} </span>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={2}>
-            <span className="parcel-origin">From: {props.origin} </span>
+            <div className="parcel-origin">
+              <span>
+                <i className="material-icons" style={{ marginRight: 10 }}>
+                  flight_takeoff
+                </i>
+              </span>
+              <span> {props.origin} </span>
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={2}>
-            <span className="parcel-destination">To: {props.destination} </span>
+            <div className="parcel-destination">
+              <i className="material-icons" style={{ marginRight: 10 }}>
+                flight_land
+              </i>
+              <span>{props.destination}</span>
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={2}>
-            <span className="parcel-status">{props.status} </span>
+            <span
+              className="parcel-status"
+              style={
+                props.status === "WAITING"
+                  ? { color: "red" }
+                  : props.status === "DELIVERED"
+                  ? { color: "green" }
+                  : null
+              }
+            >
+              {props.status}{" "}
+            </span>
           </Grid>
           <Grid item xs={12} sm={12} md={5} lg={2}>
             {AssignDialog}

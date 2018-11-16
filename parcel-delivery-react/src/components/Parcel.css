@@ -5,17 +5,24 @@
 }
 
 .parcel-origin {
-  color: blue;
-  font-weight: normal;
+  color: hsla(198, 97%, 40%, 1);
+  font-weight: 600;
 }
 .parcel-destination {
-  color: rgb(204, 51, 51);
-  font-weight: normal;
+  color: rgb(25, 155, 36);
+  font-weight: 600;
 }
 .parcel-status {
-  color: rgb(142, 11, 11);
-  font-weight: normal;
+  color: rgb(11, 20, 142);
+  font-weight: 600;
 }
 .parcel-assignee {
   margin: 10px;
+  font-weight: 600;
+  justify-content: center;
+}
+
+span,
+i.material-icons {
+  vertical-align: middle;
 }
