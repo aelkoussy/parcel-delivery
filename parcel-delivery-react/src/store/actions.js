@@ -13,3 +13,14 @@ export const assignParcel = (parcelID, bikerID) => {
     bikerID
   };
 };
+
+export const enterPickupTime = (parcelID, pickupTime) => {
+  console.log(parcelID);
+  console.log(pickupTime);
+  return { type: ENTER_PICKUP_TIMESTAMP, parcelID, pickupTime };
+};
+export const enterDeliveryTime = (parcelID, deliveryTime) => {
+  console.log(parcelID);
+  console.log(deliveryTime);
+  return { type: ENTER_DELIVERY_TIMESTAMP, parcelID, deliveryTime };
+};

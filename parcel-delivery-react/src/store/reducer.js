@@ -10,6 +10,7 @@ const parcelArray = [
     status: "ASSIGNED",
     assignee: "Muller",
     assigneeID: 1234
+    // pickupTime: null
   },
   { id: 3, origin: "Köln", destination: "	Stuttgart", status: "WAITING" },
   {
@@ -35,9 +36,9 @@ const parcelArray = [
     id: 9,
     origin: "Dresden",
     destination: "Wuppertal",
-    status: "ASSIGNED",
-    assignee: "Hermann",
-    assigneeID: 1994
+    status: "PICKED_UP",
+    assignee: "Muller",
+    assigneeID: 1234
   },
   { id: 10, origin: "Bonn", destination: "Munich", status: "WAITING" },
   { id: 11, origin: "Dresden", destination: "Mannheim", status: "WAITING" },
@@ -82,10 +83,32 @@ const reducer = (state = initialState, action) => {
       };
 
     case actions.ENTER_PICKUP_TIMESTAMP:
-      return;
+      return {
+        ...state,
+        parcels: state.parcels.map(parcel =>
+          parcel.id === action.parcelID
+            ? {
+                ...parcel,
+                pickupTime: action.pickupTime,
+                status: "PICKED_UP"
+              }
+            : parcel
+        )
+      };
 
     case actions.ENTER_DELIVERY_TIMESTAMP:
-      return;
+      return {
+        ...state,
+        parcels: state.parcels.map(parcel =>
+          parcel.id === action.parcelID
+            ? {
+                ...parcel,
+                deliveryTime: action.deliveryTime,
+                status: "DELIVERED"
+              }
+            : parcel
+        )
+      };
 
     case actions.LOGIN:
       return;

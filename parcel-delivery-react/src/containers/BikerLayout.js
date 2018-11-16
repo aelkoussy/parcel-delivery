@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 
 import Parcel from "../components/Parcel";
 import DateTime from "../components/UI/DateTimePicker";
+import * as actions from "../store/actions";
 
 const BikerLayout = props => {
   // This filters parcels such that the assignee id is equal to the biker id
   const filteredParcels = props.parcelsArray.filter(
     parcel =>
-      parcel.assigneeID === props.userData.id && parcel.status === "ASSIGNED"
+      (parcel.assigneeID === props.userData.id &&
+        parcel.status === "ASSIGNED") ||
+      parcel.status === "PICKED_UP"
   );
 
   let pickupTime = new Date();
@@ -37,12 +40,16 @@ const BikerLayout = props => {
     console.log(
       pickupTime + "is chosen for pickup time for parcel: " + parcelID
     );
+
+    props.enterPickupTime(parcelID, pickupTime);
   };
   const dialogSubmitDeliveryTimeClickedHandler = parcelID => {
     // dispatch submitDeliveryTime action here with the time
     console.log(
       deliveryTime + "is chosen for pickup time for parcel: " + parcelID
     );
+
+    props.enterDeliveryTime(parcelID, deliveryTime);
   };
 
   const parcelsToDisplay = filteredParcels.map(parcel => {
@@ -80,11 +87,18 @@ const mapStateToProps = state => {
   return { parcelsArray: state.parcels, userData: state.userData };
 };
 
-// const mapDispatchToProps = state => {
-
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    enterPickupTime: (parcelID, pickupTime) => {
+      dispatch(actions.enterPickupTime(parcelID, pickupTime));
+    },
+    enterDeliveryTime: (parcelID, deliveryTime) => {
+      dispatch(actions.enterDeliveryTime(parcelID, deliveryTime));
+    }
+  };
+};
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(BikerLayout);
