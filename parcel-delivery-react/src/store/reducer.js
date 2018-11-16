@@ -44,12 +44,27 @@ const parcelArray = [
   { id: 12, origin: "Chemnitz", destination: "Munich", status: "WAITING" }
 ];
 
+const bikerNames = [
+  { name: "Muller" },
+  { name: "Ernst" },
+  { name: "Friedrich" },
+  { name: "Hans" },
+  { name: "Heinrich" },
+  { name: "Hermann" },
+  { name: "Karl" },
+  { name: "Otto" },
+  { name: "Paul" },
+  { name: "Walter" },
+  { name: "Wilhelm" }
+];
+
 // TODO the userData shall be filled when user login using the LOGIN action
 const userData = { role: "biker", name: "Muller", id: 1234 };
 
 const initialState = {
   parcels: parcelArray,
-  userData: userData
+  userData: userData,
+  bikerNames: bikerNames
 };
 
 // TODO add logged in user data once he login
