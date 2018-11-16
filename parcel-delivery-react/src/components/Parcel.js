@@ -41,7 +41,9 @@ const Parcel = props => {
         title="Pickup time"
         description="Please enter the time of pickup"
         buttonName="Enter pickup time"
-        dialogSubmitClicked={() => props.dialogSubmitClicked(props.id)}
+        dialogSubmitClicked={() =>
+          props.dialogSubmitPickupTimeClicked(props.id)
+        }
         inputComponent={props.choosePickupTimeComponent}
       />
     ) : props.status === "PICKED_UP" && props.userRole === "biker" ? (
@@ -49,7 +51,9 @@ const Parcel = props => {
         title="Delivery time"
         description="Please enter the time of delivery"
         buttonName="Enter delivery time"
-        dialogSubmitClicked={() => props.dialogSubmitClicked(props.id)}
+        dialogSubmitClicked={() =>
+          props.dialogSubmitDeliveryTimeClicked(props.id)
+        }
         inputComponent={props.chooseDeliveryTimeComponent}
       />
     ) : null;

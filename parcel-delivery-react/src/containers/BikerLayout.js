@@ -32,13 +32,17 @@ const BikerLayout = props => {
     <DateTime onDateTimeChosen={deliveryTimeChangedHandler} />
   );
 
-  const dialogSubmitPickupTimeClickedHandler = () => {
+  const dialogSubmitPickupTimeClickedHandler = parcelID => {
     // dispatch submitPickupTime action here with the time
-    console.log(pickupTime + "is chosen for pickup time");
+    console.log(
+      pickupTime + "is chosen for pickup time for parcel: " + parcelID
+    );
   };
-  const dialogSubmitDeliveryTimeClickedHandler = () => {
+  const dialogSubmitDeliveryTimeClickedHandler = parcelID => {
     // dispatch submitDeliveryTime action here with the time
-    console.log(deliveryTime + "is chosen for pickup time");
+    console.log(
+      deliveryTime + "is chosen for pickup time for parcel: " + parcelID
+    );
   };
 
   const parcelsToDisplay = filteredParcels.map(parcel => {
