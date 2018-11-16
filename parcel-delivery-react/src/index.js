@@ -6,10 +6,17 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducer from "./store/reducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(reducer);
+// const store = createStore(reducer, composeWithDevTools());
+const store = createStore(
+  reducer,
+  composeWithDevTools()
+  // applyMiddleware(...middleware)
+  // other store enhancers if any
+);
 
 const app = (
   <Provider store={store}>
