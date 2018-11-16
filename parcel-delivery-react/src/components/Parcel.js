@@ -2,72 +2,12 @@ import "./Parcel.css";
 
 import { Grid, Paper } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 import React from "react";
 
 import FormDialog from "./UI/FormDialog";
-import IntegrationAutosuggest from "./UI/Autocomplete";
-
-// import styled from "styled-components";
-
-// const assignClickHandler = myMsg => console.log("Assign now " + myMsg);
 
 const Parcel = props => {
   let AssignDialog = null;
-  const textField = (
-    <TextField
-      autoFocus
-      margin="dense"
-      id="name"
-      label="hey"
-      type="email"
-      fullWidth
-    />
-  );
-
-  const suggestions = [
-    { label: "Afghanistan" },
-    { label: "Aland Islands" },
-    { label: "Albania" },
-    { label: "Algeria" },
-    { label: "American Samoa" },
-    { label: "Andorra" },
-    { label: "Angola" },
-    { label: "Anguilla" },
-    { label: "Antarctica" },
-    { label: "Antigua and Barbuda" },
-    { label: "Argentina" },
-    { label: "Armenia" },
-    { label: "Aruba" },
-    { label: "Australia" },
-    { label: "Austria" },
-    { label: "Azerbaijan" },
-    { label: "Bahamas" },
-    { label: "Bahrain" },
-    { label: "Bangladesh" },
-    { label: "Barbados" },
-    { label: "Belarus" },
-    { label: "Belgium" },
-    { label: "Belize" },
-    { label: "Benin" },
-    { label: "Bermuda" },
-    { label: "Bhutan" },
-    { label: "Bolivia, Plurinational State of" },
-    { label: "Bonaire, Sint Eustatius and Saba" },
-    { label: "Bosnia and Herzegovina" },
-    { label: "Botswana" },
-    { label: "Bouvet Island" },
-    { label: "Brazil" },
-    { label: "British Indian Ocean Territory" },
-    { label: "Brunei Darussalam" }
-  ];
-
-  const AssignAutocomplete = (
-    <IntegrationAutosuggest
-      suggestion={suggestions}
-      autocompleteLabel="type to search bikers, click to select"
-    />
-  );
 
   // Open a form & then dispatch the action
   // Here we pass the autocomplete component to be rendered inside the AssignDialog
@@ -77,7 +17,8 @@ const Parcel = props => {
         title="Assign parcel to biker"
         description="Please type the biker name to assign this parcel to"
         buttonName="Assign now"
-        inputComponent={AssignAutocomplete}
+        inputComponent={props.assignAutoSelectComponent}
+        dialogSubmitClicked={props.dialogSubmitClicked}
       />
     ) : null;
 
@@ -95,12 +36,16 @@ const Parcel = props => {
         title="Pickup time"
         description="Please enter the time of pickup"
         buttonName="Enter pickup time"
+        dialogSubmitClicked={props.dialogSubmitPickupTimeClicked}
+        inputComponent={props.choosePickupTimeComponent}
       />
     ) : props.status === "PICKED_UP" && props.userRole === "biker" ? (
       <FormDialog
         title="Delivery time"
         description="Please enter the time of delivery"
         buttonName="Enter delivery time"
+        dialogSubmitClicked={props.dialogSubmitDeliveryTimeClicked}
+        inputComponent={props.chooseDeliveryTimeComponent}
       />
     ) : null;
 
