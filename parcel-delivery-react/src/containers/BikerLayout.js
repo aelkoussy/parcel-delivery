@@ -1,24 +1,64 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import Parcel from "../components/Parcel";
+import DateTime from "../components/UI/DateTimePicker";
 
 const BikerLayout = props => {
-  // TODO This shall be filtered such that the assignee id is equal to the biker id
+  // This filters parcels such that the assignee id is equal to the biker id
   const filteredParcels = props.parcelsArray.filter(
     parcel =>
       parcel.assigneeID === props.userData.id && parcel.status === "ASSIGNED"
   );
 
+  let pickupTime = new Date();
+  let deliveryTime = new Date();
+
+  const pickupTimeChangedHandler = time => {
+    pickupTime = time;
+    console.log("from Biker: pickup time is:" + pickupTime);
+  };
+
+  const deliveryTimeChangedHandler = time => {
+    pickupTime = time;
+    console.log("from Biker: pickup time is:" + pickupTime);
+  };
+  // here we assign the time choice component to be loaded in the parcel dialog on clicking the action button
+
+  const choosePickupTimeComponent = (
+    <DateTime onDateTimeChosen={pickupTimeChangedHandler} />
+  );
+  const chooseDeliveryTimeComponent = (
+    <DateTime onDateTimeChosen={deliveryTimeChangedHandler} />
+  );
+
+  const dialogSubmitPickupTimeClickedHandler = () => {
+    // dispatch submitPickupTime action here with the time
+    console.log(pickupTime + "is chosen for pickup time");
+  };
+  const dialogSubmitDeliveryTimeClickedHandler = () => {
+    // dispatch submitDeliveryTime action here with the time
+    console.log(deliveryTime + "is chosen for pickup time");
+  };
+
   const parcelsToDisplay = filteredParcels.map(parcel => {
     return (
-      <Parcel
-        id={parcel.id}
-        origin={parcel.origin}
-        destination={parcel.destination}
-        status={parcel.status}
-        assignee={parcel.assignee}
-        userRole={props.userData.role}
-      />
+      <div key={parcel.id}>
+        <Parcel
+          id={parcel.id}
+          origin={parcel.origin}
+          destination={parcel.destination}
+          status={parcel.status}
+          assignee={parcel.assignee}
+          userRole={props.userData.role}
+          dialogSubmitPickupTimeClicked={dialogSubmitPickupTimeClickedHandler}
+          dialogSubmitDeliveryTimeClicked={
+            dialogSubmitDeliveryTimeClickedHandler
+          }
+          choosePickupTimeComponent={choosePickupTimeComponent}
+          chooseDeliveryTimeComponent={chooseDeliveryTimeComponent}
+        />
+      </div>
     );
   });
 
