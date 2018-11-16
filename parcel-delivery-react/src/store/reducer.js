@@ -16,7 +16,7 @@ const parcelArray = [
     id: 4,
     origin: "Dortmund",
     destination: "Essen",
-    status: "ASSIGNED",
+    status: "DELIVERED",
     assignee: "David",
     assigneeID: 1534
   },
@@ -72,7 +72,14 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.ASSIGN_PARCEL:
-      return;
+      return {
+        ...state,
+        parcels: state.parcels.map(parcel =>
+          parcel.id === action.parcelID
+            ? { ...parcel, assignee: action.bikerID, status: "ASSIGNED" }
+            : parcel
+        )
+      };
 
     case actions.ENTER_PICKUP_TIMESTAMP:
       return;

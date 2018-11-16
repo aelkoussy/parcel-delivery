@@ -35,7 +35,9 @@ export default class FormDialog extends React.Component {
         >
           <DialogTitle id="form-dialog-title">{this.props.title}</DialogTitle>
           <DialogContent>
-            <DialogContentText>{this.props.description}</DialogContentText>
+            <DialogContentText style={{ marginBottom: 10 }}>
+              {this.props.description}
+            </DialogContentText>
             {/* we added here a prop to pass a form component that dispatches some action with callback function  */}
             {this.props.inputComponent}
           </DialogContent>
