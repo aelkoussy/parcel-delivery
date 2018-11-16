@@ -14,8 +14,12 @@ export default class FormDialog extends React.Component {
   };
 
   handleClose = () => {
-    this.props.dialogSubmitClicked();
     this.setState({ open: false });
+  };
+
+  submitClicked = () => {
+    this.handleClose();
+    this.props.dialogSubmitClicked();
   };
 
   render() {
@@ -39,7 +43,7 @@ export default class FormDialog extends React.Component {
             <Button onClick={this.handleClose} color="secondary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.submitClicked} color="primary">
               Submit
             </Button>
           </DialogActions>
