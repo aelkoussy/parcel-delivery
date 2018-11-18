@@ -59,9 +59,11 @@ router.put("/parcel/assign", verifyJwt, async ctx => {
     { where: { id: request_body.parcelID } }
   );
 
+  var parcel = await db.Parcel.findById(request_body.parcelID);
   ctx.body = {
     status: "success",
-    message: "parcel was added successfully!"
+    message: "parcel was assigned successfully!",
+    parcel: parcel // sending the updated parcel in response
   };
 });
 
@@ -74,9 +76,11 @@ router.put("/parcel/submitPickupTimestamp", verifyJwt, async ctx => {
     { where: { id: request_body.parcelID } }
   );
 
+  var parcel = await db.Parcel.findById(request_body.parcelID);
   ctx.body = {
     status: "success",
-    message: "parcel pickup timestamp was updated successfully!"
+    message: "parcel was assigned successfully!",
+    parcel: parcel // sending the updated parcel in response
   };
 });
 // The assign parcel API , only bikers
@@ -88,9 +92,11 @@ router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async ctx => {
     { where: { id: request_body.parcelID } }
   );
 
+  var parcel = await db.Parcel.findById(request_body.parcelID);
   ctx.body = {
     status: "success",
-    message: "parcel delivery timestamp was updated successfully!"
+    message: "parcel was assigned successfully!",
+    parcel: parcel // sending the updated parcel in response
   };
 });
 
