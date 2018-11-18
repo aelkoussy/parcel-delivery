@@ -23,8 +23,19 @@ const store = createStore(
 
 // this shall point to the baseURL of the node.js server
 axios.defaults.baseURL = "http://localhost:5000";
-axios.defaults.headers.common["Authorization"] =
-  "Bearer " + sessionStorage.getItem("jwtToken");
+
+// using interceptor instead of header default to always use the latest jwt available
+axios.interceptors.request.use(
+  function(config) {
+    config.headers = {
+      Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`
+    };
+    return config;
+  },
+  function(error) {
+    return Promise.reject(error);
+  }
+);
 
 const app = (
   <Provider store={store}>
@@ -39,4 +50,4 @@ ReactDOM.render(app, document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
