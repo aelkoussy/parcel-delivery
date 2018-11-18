@@ -9,9 +9,17 @@
   "author": "Ahmed Elkoussy",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "@types/sequelize": "^4.27.30",
+    "bcrypt": "^3.0.2",
+    "jsonwebtoken": "^8.4.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
+    "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
-    "sequelize": "^4.41.2"
+    "koa2-cors": "^2.0.6",
+    "sequelize": "^4.41.2",
+    "sequelize-cli": "^5.3.0",
+    "sqlite3": "^4.0.4"
   }
 }
