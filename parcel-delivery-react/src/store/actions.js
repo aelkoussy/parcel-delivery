@@ -8,8 +8,8 @@ export const GET_PARCELS = "GET_PARCELS";
 export const GET_BIKERS = "GET_BIKERS";
 export const GET_BIKER_PARCELS = "GET_BIKER_PARCELS";
 
-export const assignParcel = (parcelID, chosenBiker) => {
-  return { type: ASSIGN_PARCEL, parcelID, chosenBiker };
+export const assignParcel = (parcelID, chosenBiker, updatedParcel) => {
+  return { type: ASSIGN_PARCEL, parcelID, chosenBiker, updatedParcel };
 };
 
 export const assignParcelAsync = (parcelID, chosenBiker) => {
@@ -20,13 +20,15 @@ export const assignParcelAsync = (parcelID, chosenBiker) => {
         UserID: chosenBiker.id,
         status: "ASSIGNED"
       })
-      .then(() => dispatch(assignParcel(parcelID, chosenBiker)))
+      .then(response =>
+        dispatch(assignParcel(parcelID, chosenBiker, response.data.parcel))
+      )
       .catch(console.log("Sorry, something went wrong"));
   };
 };
 
-export const enterPickupTime = (parcelID, pickupTime) => {
-  return { type: ENTER_PICKUP_TIMESTAMP, parcelID, pickupTime };
+export const enterPickupTime = (parcelID, updatedParcel) => {
+  return { type: ENTER_PICKUP_TIMESTAMP, parcelID, updatedParcel };
 };
 
 export const enterPickupTimeAsync = (parcelID, pickupTime) => {
@@ -36,11 +38,13 @@ export const enterPickupTimeAsync = (parcelID, pickupTime) => {
         parcelID: parcelID,
         pickupTimestamp: pickupTime
       })
-      .then(() => dispatch(enterPickupTime(parcelID, pickupTime)))
+      .then(response =>
+        dispatch(enterPickupTime(parcelID, response.data.parcel))
+      )
       .catch(console.log("Sorry, something went wrong"));
 };
-export const enterDeliveryTime = (parcelID, deliveryTime) => {
-  return { type: ENTER_DELIVERY_TIMESTAMP, parcelID, deliveryTime };
+export const enterDeliveryTime = (parcelID, updatedParcel) => {
+  return { type: ENTER_DELIVERY_TIMESTAMP, parcelID, updatedParcel };
 };
 
 export const enterDeliveryTimeAsync = (parcelID, deliveryTime) => {
@@ -50,7 +54,9 @@ export const enterDeliveryTimeAsync = (parcelID, deliveryTime) => {
         parcelID: parcelID,
         deliveryTimestamp: deliveryTime
       })
-      .then(() => dispatch(enterDeliveryTime(parcelID, deliveryTime)))
+      .then(response =>
+        dispatch(enterDeliveryTime(parcelID, response.data.parcel))
+      )
       .catch(console.log("Sorry, something went wrong"));
 };
 
@@ -89,7 +95,6 @@ export const getBikersAsync = () => {
 };
 
 export const getBikerParcels = bikerParcels => {
-  console.log(bikerParcels);
   return { type: GET_BIKER_PARCELS, bikerParcels };
 };
 

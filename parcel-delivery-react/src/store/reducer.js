@@ -1,13 +1,8 @@
 import * as actions from "./actions";
 
-// this shall be the initial state of the application, parcel attributes, these shall be increased to 50 as requested
 const parcelArray = [];
-
 const bikerArray = [];
 const bikerParcels = [];
-
-// TODO the userData shall be filled when user login using the LOGIN action
-// const userData = { role: "biker", name: "Muller", id: 1 };
 
 const initialState = {
   parcels: parcelArray,
@@ -20,16 +15,13 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.ASSIGN_PARCEL:
-      // here we grab the chosenBiker object
-      // const chosenBiker = state.bikers.find(i => i.id === action.bikerID);
       return {
         ...state,
         parcels: state.parcels.map(parcel =>
           parcel.id === action.parcelID
             ? {
                 ...parcel,
-                UserID: action.chosenBiker.id,
-                status: "ASSIGNED"
+                ...action.updatedParcel // getting the updated parcel from the API to make sure it was really updated in DB
               }
             : parcel
         )
@@ -42,8 +34,7 @@ const reducer = (state = initialState, action) => {
           parcel.id === action.parcelID
             ? {
                 ...parcel,
-                pickupTime: action.pickupTime,
-                status: "PICKED_UP"
+                ...action.updatedParcel // getting the updated parcel from the API to make sure it was really updated in DB
               }
             : parcel
         )
@@ -56,8 +47,7 @@ const reducer = (state = initialState, action) => {
           parcel.id === action.parcelID
             ? {
                 ...parcel,
-                deliveryTime: action.deliveryTime,
-                status: "DELIVERED"
+                ...action.updatedParcel // getting the updated parcel from the API to make sure it was really updated in DB
               }
             : parcel
         )
