@@ -64,7 +64,6 @@ export const enterDeliveryTimeAsync = (parcelID, deliveryTime) => {
 // & all requests to API shall include the jwt (except ONLY the login request call)
 
 export const getParcels = parcels => {
-  console.log(parcels);
   return {
     type: GET_PARCELS,
     parcels
@@ -81,7 +80,6 @@ export const getParcelsAsync = () => {
 };
 
 export const getBikers = bikers => {
-  console.log(bikers);
   return { type: GET_BIKERS, bikers };
 };
 
@@ -108,7 +106,6 @@ export const getBikerParcelsAsync = () => {
 };
 
 export const login = authDetails => {
-  console.log(authDetails);
   sessionStorage.setItem("jwtToken", authDetails.token);
   return { type: LOGIN, authDetails };
 };
