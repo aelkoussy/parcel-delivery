@@ -14,13 +14,9 @@ const handleAutoSelectValueChosen = value => {
 };
 
 const ManagerLayout = props => {
-  // if the parcel array in state is empty, we will call the parcel api to load them
-  if (props.parcelsArray.length === 0) {
-    props.getParcels();
-  }
-
-  if (props.bikers.length === 0) {
-    props.getBikers();
+  // if the (parcel/bikers) array in state is empty, we will redirect to login page to login & load them
+  if (props.parcelsArray.length === 0 || props.bikers.length === 0) {
+    props.history.push("/");
   }
 
   // building the AutoSelect component that will be passed to the dialog
@@ -39,8 +35,6 @@ const ManagerLayout = props => {
         ? props.bikers.filter(biker => biker.id === autoCompleteValue.value)
         : [];
 
-    console.log(chosenBiker);
-
     // if he tries to submit with a name that is not in the bikers, we won't assign
     // TODO dispatch assign action here, with the parcelID & the bikerID or biker Name
     chosenBiker.length !== 0
@@ -51,13 +45,11 @@ const ManagerLayout = props => {
     autoCompleteValue = null;
   };
 
-  const managerParcelList = props.parcelsArray.map(parcel => {
-    const assignee = props.bikers.find(biker => biker.id === parcel.UserID);
-    let assigneeName;
-    if (assignee !== undefined) {
-      assigneeName = assignee.firstName + " " + assignee.lastName;
-      console.log(assigneeName);
-    }
+  let managerParcelList = props.parcelsArray.map(parcel => {
+    const assignee = props.bikers.find(
+      biker => String(biker.id) === parcel.UserID
+    );
+
     return (
       <Parcel
         key={parcel.id}
@@ -65,7 +57,7 @@ const ManagerLayout = props => {
         origin={parcel.origin}
         destination={parcel.destination}
         status={parcel.status}
-        assignee={assigneeName}
+        assignee={assignee}
         assigneeID={parcel.UserID}
         canAssignParcel
         assignAutoSelectComponent={assignAutoSelectComponent}

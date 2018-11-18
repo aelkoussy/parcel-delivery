@@ -29,7 +29,9 @@ const Parcel = props => {
       <span>
         <i className="material-icons">assignment_ind</i>
       </span>
-      <span className="parcel-assignee">{props.assignee} </span>
+      <span className="parcel-assignee">
+        {props.assignee.firstName + " " + props.assignee.lastName}
+      </span>
     </div>
   ) : null;
 

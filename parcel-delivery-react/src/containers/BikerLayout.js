@@ -6,9 +6,9 @@ import DateTime from "../components/UI/DateTimePicker";
 import * as actions from "../store/actions";
 
 const BikerLayout = props => {
-  // This filters parcels such that the assignee id is equal to the biker id
+  // if the parcel array in state is empty, we will redirect to login page to login & load them
   if (props.bikerParcels.length === 0) {
-    props.getBikerParcels();
+    props.history.push("/");
   }
   const filteredParcels = props.bikerParcels.filter(
     parcel =>
@@ -56,6 +56,9 @@ const BikerLayout = props => {
   };
 
   const parcelsToDisplay = filteredParcels.map(parcel => {
+    // const assignee = props.bikers.find(
+    //   biker => String(biker.id) === parcel.UserID
+    // );
     return (
       <div key={parcel.id}>
         <Parcel
@@ -90,7 +93,8 @@ const mapStateToProps = state => {
   return {
     bikerParcels: state.parcels,
     authDetails: state.authDetails,
-    role: state.role
+    role: state.role,
+    bikers: state.bikers
   };
 };
 
