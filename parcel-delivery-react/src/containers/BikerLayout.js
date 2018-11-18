@@ -56,9 +56,6 @@ const BikerLayout = props => {
   };
 
   const parcelsToDisplay = filteredParcels.map(parcel => {
-    // const assignee = props.bikers.find(
-    //   biker => String(biker.id) === parcel.UserID
-    // );
     return (
       <div key={parcel.id}>
         <Parcel
@@ -83,7 +80,7 @@ const BikerLayout = props => {
 
   return (
     <div>
-      <h2>Bikers view</h2>
+      <h2>Biker view</h2>
       {parcelsToDisplay}
     </div>
   );
@@ -93,6 +90,7 @@ const mapStateToProps = state => {
   return {
     bikerParcels: state.parcels,
     authDetails: state.authDetails,
+    firstName: state.userFirstName,
     role: state.role,
     bikers: state.bikers
   };

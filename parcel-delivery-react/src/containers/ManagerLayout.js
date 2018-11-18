@@ -81,7 +81,8 @@ const mapStateToProps = state => {
     parcelsArray: state.parcels,
     userRole: state.userRole,
     userID: state.userID,
-    bikers: state.bikers
+    bikers: state.bikers,
+    firstName: state.userFirstName
   };
 };
 

@@ -57,6 +57,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         authDetails: action.authDetails,
+        userFirstName: action.authDetails.firstName,
         role: action.authDetails.role
       };
 
