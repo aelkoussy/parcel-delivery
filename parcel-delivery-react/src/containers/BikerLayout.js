@@ -7,11 +7,14 @@ import * as actions from "../store/actions";
 
 const BikerLayout = props => {
   // This filters parcels such that the assignee id is equal to the biker id
-  const filteredParcels = props.parcelsArray.filter(
+  if (props.bikerParcels.length === 0) {
+    props.getBikerParcels();
+  }
+  const filteredParcels = props.bikerParcels.filter(
     parcel =>
-      (parcel.assigneeID === props.userData.id &&
-        parcel.status === "ASSIGNED") ||
-      parcel.status === "PICKED_UP"
+      parcel.status === "ASSIGNED" ||
+      parcel.status === "PICKED_UP" ||
+      parcel.status === "DELIVERED"
   );
 
   let pickupTime = new Date();
@@ -60,8 +63,8 @@ const BikerLayout = props => {
           origin={parcel.origin}
           destination={parcel.destination}
           status={parcel.status}
-          assignee={parcel.assignee}
-          userRole={props.userData.role}
+          assigneeID={parcel.UserID}
+          userRole={props.role}
           dialogSubmitPickupTimeClicked={dialogSubmitPickupTimeClickedHandler}
           dialogSubmitDeliveryTimeClicked={
             dialogSubmitDeliveryTimeClickedHandler
@@ -84,16 +87,23 @@ const BikerLayout = props => {
 };
 
 const mapStateToProps = state => {
-  return { parcelsArray: state.parcels, userData: state.userData };
+  return {
+    bikerParcels: state.parcels,
+    authDetails: state.authDetails,
+    role: state.role
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     enterPickupTime: (parcelID, pickupTime) => {
-      dispatch(actions.enterPickupTime(parcelID, pickupTime));
+      dispatch(actions.enterPickupTimeAsync(parcelID, pickupTime));
     },
     enterDeliveryTime: (parcelID, deliveryTime) => {
-      dispatch(actions.enterDeliveryTime(parcelID, deliveryTime));
+      dispatch(actions.enterDeliveryTimeAsync(parcelID, deliveryTime));
+    },
+    getBikerParcels: () => {
+      dispatch(actions.getBikerParcelsAsync());
     }
   };
 };

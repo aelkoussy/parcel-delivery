@@ -1,71 +1,18 @@
 import * as actions from "./actions";
 
 // this shall be the initial state of the application, parcel attributes, these shall be increased to 50 as requested
-const parcelArray = [
-  { id: 1, origin: "Dresden", destination: "Munich", status: "WAITING" },
-  {
-    id: 2,
-    origin: "Berlin",
-    destination: "Hamburg",
-    status: "ASSIGNED",
-    assignee: "Muller",
-    assigneeID: 1234
-    // pickupTime: null
-  },
-  { id: 3, origin: "Köln", destination: "	Stuttgart", status: "WAITING" },
-  {
-    id: 4,
-    origin: "Dortmund",
-    destination: "Essen",
-    status: "DELIVERED",
-    assignee: "David",
-    assigneeID: 1534
-  },
-  { id: 5, origin: "Leipzig", destination: "Bremen", status: "WAITING" },
-  {
-    id: 6,
-    origin: "Nürnberg",
-    destination: "Munich",
-    status: "ASSIGNED",
-    assignee: "Günter",
-    assigneeID: 1722
-  },
-  { id: 7, origin: "Duisburg", destination: "Munich", status: "WAITING" },
-  { id: 8, origin: "Bochum", destination: "Munich", status: "WAITING" },
-  {
-    id: 9,
-    origin: "Dresden",
-    destination: "Wuppertal",
-    status: "PICKED_UP",
-    assignee: "Muller",
-    assigneeID: 1234
-  },
-  { id: 10, origin: "Bonn", destination: "Munich", status: "WAITING" },
-  { id: 11, origin: "Dresden", destination: "Mannheim", status: "WAITING" },
-  { id: 12, origin: "Chemnitz", destination: "Munich", status: "WAITING" }
-];
+const parcelArray = [];
 
-const bikerNames = [
-  { name: "Muller" },
-  { name: "Ernst" },
-  { name: "Friedrich" },
-  { name: "Hans" },
-  { name: "Heinrich" },
-  { name: "Hermann" },
-  { name: "Karl" },
-  { name: "Otto" },
-  { name: "Paul" },
-  { name: "Walter" },
-  { name: "Wilhelm" }
-];
+const bikerArray = [];
+const bikerParcels = [];
 
 // TODO the userData shall be filled when user login using the LOGIN action
-const userData = { role: "biker", name: "Muller", id: 1234 };
+// const userData = { role: "biker", name: "Muller", id: 1 };
 
 const initialState = {
   parcels: parcelArray,
-  userData: userData,
-  bikerNames: bikerNames
+  bikers: bikerArray,
+  bikerParcels: bikerParcels
 };
 
 // TODO add logged in user data once he login
@@ -73,11 +20,17 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.ASSIGN_PARCEL:
+      // here we grab the chosenBiker object
+      // const chosenBiker = state.bikers.find(i => i.id === action.bikerID);
       return {
         ...state,
         parcels: state.parcels.map(parcel =>
           parcel.id === action.parcelID
-            ? { ...parcel, assignee: action.bikerID, status: "ASSIGNED" }
+            ? {
+                ...parcel,
+                UserID: action.chosenBiker.id,
+                status: "ASSIGNED"
+              }
             : parcel
         )
       };
@@ -111,7 +64,20 @@ const reducer = (state = initialState, action) => {
       };
 
     case actions.LOGIN:
-      return;
+      return {
+        ...state,
+        authDetails: action.authDetails,
+        role: action.authDetails.role
+      };
+
+    case actions.GET_PARCELS:
+      console.log(action);
+      return { ...state, parcels: action.parcels };
+
+    case actions.GET_BIKERS:
+      return { ...state, bikers: action.bikers };
+    case actions.GET_BIKER_PARCELS:
+      return { ...state, parcels: action.bikerParcels };
 
     default:
       return state;

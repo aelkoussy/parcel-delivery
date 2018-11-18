@@ -14,29 +14,37 @@ const handleAutoSelectValueChosen = value => {
 };
 
 const ManagerLayout = props => {
-  // building the AutoSelect component that will be passed to the dialog
+  // if the parcel array in state is empty, we will call the parcel api to load them
+  if (props.parcelsArray.length === 0) {
+    props.getParcels();
+  }
 
+  if (props.bikers.length === 0) {
+    props.getBikers();
+  }
+
+  // building the AutoSelect component that will be passed to the dialog
   const assignAutoSelectComponent = (
     <AutoSelect
       autoSelectPlaceholder="Please select a biker, type to narrow down the names"
-      suggestions={props.bikerNames}
+      suggestions={props.bikers}
       onValueChosen={handleAutoSelectValueChosen}
     />
   );
 
   // here this shall check that the chosen biker name match one of the biker names & dispatch the reducer action to assign to biker
   const assignSubmitClickedHandler = parcelID => {
-    let chosenElement =
+    let chosenBiker =
       autoCompleteValue !== undefined && autoCompleteValue !== null
-        ? props.bikerNames.filter(
-            bikerName => bikerName.name === autoCompleteValue.value
-          )
+        ? props.bikers.filter(biker => biker.id === autoCompleteValue.value)
         : [];
+
+    console.log(chosenBiker);
 
     // if he tries to submit with a name that is not in the bikers, we won't assign
     // TODO dispatch assign action here, with the parcelID & the bikerID or biker Name
-    chosenElement.length !== 0
-      ? props.assignParcel(parcelID, chosenElement[0].name)
+    chosenBiker.length !== 0
+      ? props.assignParcel(parcelID, chosenBiker[0])
       : console.log("No valid biker chosen"); // TODO use snackbar notification here or a div
 
     // resetting the chosen value after dispatching the action, so that the chosen name won't stick & will be reset when dialog is closed
@@ -44,6 +52,12 @@ const ManagerLayout = props => {
   };
 
   const managerParcelList = props.parcelsArray.map(parcel => {
+    const assignee = props.bikers.find(biker => biker.id === parcel.UserID);
+    let assigneeName;
+    if (assignee !== undefined) {
+      assigneeName = assignee.firstName + " " + assignee.lastName;
+      console.log(assigneeName);
+    }
     return (
       <Parcel
         key={parcel.id}
@@ -51,10 +65,12 @@ const ManagerLayout = props => {
         origin={parcel.origin}
         destination={parcel.destination}
         status={parcel.status}
-        assignee={parcel.assignee}
+        assignee={assigneeName}
+        assigneeID={parcel.UserID}
         canAssignParcel
         assignAutoSelectComponent={assignAutoSelectComponent}
         dialogSubmitClicked={assignSubmitClickedHandler}
+        bikers={props.bikers}
       />
     );
   });
@@ -62,7 +78,7 @@ const ManagerLayout = props => {
 
   return (
     <div>
-      <h2>Manager panel</h2>
+      <h2>Managers panel</h2>
       {managerParcelList}
     </div>
   );
@@ -73,14 +89,20 @@ const mapStateToProps = state => {
     parcelsArray: state.parcels,
     userRole: state.userRole,
     userID: state.userID,
-    bikerNames: state.bikerNames
+    bikers: state.bikers
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     assignParcel: (parcelID, bikerID) => {
-      dispatch(actions.assignParcel(parcelID, bikerID));
+      dispatch(actions.assignParcelAsync(parcelID, bikerID));
+    },
+    getParcels: () => {
+      dispatch(actions.getParcelsAsync());
+    },
+    getBikers: () => {
+      dispatch(actions.getBikersAsync());
     }
   };
 };
