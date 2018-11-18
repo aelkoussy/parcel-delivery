@@ -8,20 +8,33 @@ import Grid from "@material-ui/core/Grid";
 class LoginContainer extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    valid: true // just to avoid displaying error message in the beginning, before login is submitted it is checked again
   };
 
   render() {
+    const validationMsg = this.state.valid ? null : (
+      <p style={{ color: "red" }}>Please enter valid data</p>
+    );
     // redirecting based on user role
     switch (this.props.role) {
       case "manager":
-        this.props.history.push("/managers");
+        this.props.getParcels();
+        this.props.getBikers();
         break;
       case "biker":
-        this.props.history.push("/bikers");
+        this.props.getBikerParcels();
         break;
 
       default:
+    }
+
+    if (this.props.parcels.length > 0 && this.props.bikers.length > 0) {
+      this.props.history.push("/managers");
+    }
+
+    if (this.props.parcels.length > 0 && this.props.role === "biker") {
+      this.props.history.push("/bikers");
     }
 
     return (
@@ -45,6 +58,9 @@ class LoginContainer extends Component {
             onChange={this.handleChange("password")}
             margin="normal"
           />
+
+          {validationMsg}
+
           <Button onClick={() => this.validateThenLogin()} color="primary">
             Submit
           </Button>
@@ -61,13 +77,24 @@ class LoginContainer extends Component {
 
   validateThenLogin = () => {
     // TODO add some validation logic before calling login here
-    this.props.login(this.state.email, this.state.password);
+
+    var simpleEmailCheck = /\S+@\S+\.\S+/;
+    let validation = simpleEmailCheck.test(this.state.email);
+    validation = validation && (this.state.password != null || "");
+
+    validation
+      ? this.setState({
+          valid: true
+        })
+      : this.setState({ valid: false });
+
+    if (validation) this.props.login(this.state.email, this.state.password);
   };
 }
 
 const mapStateToProps = state => {
   return {
-    parcelsArray: state.parcels,
+    parcels: state.parcels,
     userRole: state.userRole,
     userID: state.userID,
     bikers: state.bikers,
@@ -78,9 +105,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    assignParcel: (parcelID, bikerID) => {
-      dispatch(actions.assignParcelAsync(parcelID, bikerID));
-    },
     getParcels: () => {
       dispatch(actions.getParcelsAsync());
     },
@@ -89,6 +113,9 @@ const mapDispatchToProps = dispatch => {
     },
     login: (email, password) => {
       dispatch(actions.loginAsync(email, password));
+    },
+    getBikerParcels: () => {
+      dispatch(actions.getBikerParcelsAsync());
     }
   };
 };
