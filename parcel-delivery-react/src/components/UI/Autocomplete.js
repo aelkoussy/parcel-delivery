@@ -10,7 +10,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 
 // How to use this (by Ahmed Elkoussy)
-// I have added this autocompleteLabel prop to pass a label the autocomplete here
+// pass a label for the autocomplete here props.autocompleteLabel
+// pass the suggestions array by props.suggestions passed by the caller
 
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
@@ -155,7 +156,6 @@ class IntegrationAutosuggest extends React.Component {
           {...autosuggestProps}
           inputProps={{
             classes,
-            // placeholder: "Search a country (start with a)",
             placeholder: this.props.autocompleteLabel,
             value: this.state.single,
             onChange: this.handleChange("single")

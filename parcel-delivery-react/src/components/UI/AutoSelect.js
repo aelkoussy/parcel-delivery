@@ -169,7 +169,7 @@ class IntegrationReactSelect extends React.Component {
     multi: null
   };
 
-  // added by Ahmed to pass chosen value to parent component
+  // pass chosen value to parent component
   passChangeToParent = () => this.props.onValueChosen(this.state.single);
 
   handleChange = name => value => {
@@ -196,8 +196,8 @@ class IntegrationReactSelect extends React.Component {
             classes={classes}
             styles={selectStyles}
             options={this.props.suggestions.map(suggestion => ({
-              value: suggestion.name, // we can map value here to id for example
-              label: suggestion.name
+              value: suggestion.id, // we can map value here to id for example
+              label: suggestion.firstName + " " + suggestion.lastName
             }))}
             components={components}
             value={this.state.single}
