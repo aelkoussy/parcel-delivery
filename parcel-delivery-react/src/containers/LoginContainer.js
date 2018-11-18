@@ -4,6 +4,7 @@ import * as actions from "../store/actions";
 import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import { Redirect } from "react-router";
 
 class LoginContainer extends Component {
   state = {
@@ -30,11 +31,11 @@ class LoginContainer extends Component {
     }
 
     if (this.props.parcels.length > 0 && this.props.bikers.length > 0) {
-      this.props.history.push("/managers");
+      return <Redirect to="/managers" />;
     }
 
     if (this.props.parcels.length > 0 && this.props.role === "biker") {
-      this.props.history.push("/bikers");
+      return <Redirect to="/bikers" />;
     }
 
     return (
@@ -88,7 +89,9 @@ class LoginContainer extends Component {
         })
       : this.setState({ valid: false });
 
-    if (validation) this.props.login(this.state.email, this.state.password);
+    if (validation) {
+      this.props.login(this.state.email, this.state.password);
+    }
   };
 }
 
