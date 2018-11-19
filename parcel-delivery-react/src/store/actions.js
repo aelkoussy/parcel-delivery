@@ -8,8 +8,8 @@ export const GET_PARCELS = "GET_PARCELS";
 export const GET_BIKERS = "GET_BIKERS";
 export const GET_BIKER_PARCELS = "GET_BIKER_PARCELS";
 
-export const assignParcel = (parcelID, chosenBiker, updatedParcel) => {
-  return { type: ASSIGN_PARCEL, parcelID, chosenBiker, updatedParcel };
+export const assignParcel = (parcelID, updatedParcel) => {
+  return { type: ASSIGN_PARCEL, parcelID, updatedParcel };
 };
 
 export const assignParcelAsync = (parcelID, chosenBiker) => {
@@ -20,9 +20,7 @@ export const assignParcelAsync = (parcelID, chosenBiker) => {
         UserID: chosenBiker.id,
         status: "ASSIGNED"
       })
-      .then(response =>
-        dispatch(assignParcel(parcelID, chosenBiker, response.data.parcel))
-      )
+      .then(response => dispatch(assignParcel(parcelID, response.data.parcel)))
       .catch(console.log("Sorry, something went wrong"));
   };
 };
