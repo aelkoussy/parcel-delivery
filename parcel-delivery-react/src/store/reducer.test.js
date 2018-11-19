@@ -358,4 +358,29 @@ describe("Reducer:", () => {
       }
     );
   });
+
+  it("assignPacel should create an action to assign pacel", () => {
+    const expectedAction = {
+      type: actions.ASSIGN_PARCEL,
+      parcelID: 123,
+      updatedParcel: {
+        id: 123,
+        origin: "Berlin",
+        destination: "Hamburg",
+        status: "PICKED_UP",
+        UserID: 1,
+        pickupTimestamp: "2018-11-19T00:48:49.304"
+      }
+    };
+    expect(
+      actions.assignParcel(123, {
+        id: 123,
+        origin: "Berlin",
+        destination: "Hamburg",
+        status: "PICKED_UP",
+        UserID: 1,
+        pickupTimestamp: "2018-11-19T00:48:49.304"
+      })
+    ).toEqual(expectedAction);
+  });
 });
