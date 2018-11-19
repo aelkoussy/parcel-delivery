@@ -4,7 +4,7 @@ import { Grid, Paper } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import React from "react";
 
-import FormDialog from "./UI/FormDialog";
+import FormDialog from "../UI/FormDialog";
 
 const Parcel = props => {
   let AssignDialog = null;
