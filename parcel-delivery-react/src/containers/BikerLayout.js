@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Parcel from "../components/Parcel";
+import Parcel from "../components/Parcel/Parcel";
 import DateTime from "../components/UI/DateTimePicker";
 import * as actions from "../store/actions";
 

@@ -1,8 +1,9 @@
-import React from "react";
-import { shallow, configure, mount } from "enzyme";
+import { configure, mount, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import React from "react";
+
+import FormDialog from "../UI/FormDialog";
 import Parcel from "./Parcel";
-import FormDialog from "./UI/FormDialog";
 
 configure({ adapter: new Adapter() });
 
