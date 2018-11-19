@@ -27,13 +27,293 @@ module.exports = {
           destination: "Hamburg",
           status: "ASSIGNED",
           UserID: 1,
-          // pickupTime: null
           createdAt: new Date().toDateString(),
           updatedAt: new Date().toDateString()
         },
         {
           origin: "Köln",
           destination: "Stuttgart",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dortmund",
+          destination: "Essen",
+          status: "DELIVERED",
+          UserID: 2,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Leipzig",
+          destination: "Bremen",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Nürnberg",
+          destination: "Munich",
+          status: "ASSIGNED",
+          UserID: 3,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Duisburg",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bochum",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Wuppertal",
+          status: "PICKED_UP",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bonn",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Mannheim",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Berlin",
+          destination: "Hamburg",
+          status: "ASSIGNED",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Köln",
+          destination: "Stuttgart",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dortmund",
+          destination: "Essen",
+          status: "DELIVERED",
+          UserID: 2,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Leipzig",
+          destination: "Bremen",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Nürnberg",
+          destination: "Munich",
+          status: "ASSIGNED",
+          UserID: 3,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Duisburg",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bochum",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Wuppertal",
+          status: "PICKED_UP",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bonn",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Mannheim",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Berlin",
+          destination: "Hamburg",
+          status: "ASSIGNED",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Köln",
+          destination: "Stuttgart",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dortmund",
+          destination: "Essen",
+          status: "DELIVERED",
+          UserID: 2,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Leipzig",
+          destination: "Bremen",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Nürnberg",
+          destination: "Munich",
+          status: "ASSIGNED",
+          UserID: 3,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Duisburg",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bochum",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Wuppertal",
+          status: "PICKED_UP",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bonn",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Mannheim",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Berlin",
+          destination: "Hamburg",
+          status: "ASSIGNED",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Köln",
+          destination: "Stuttgart",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dortmund",
+          destination: "Essen",
+          status: "DELIVERED",
+          UserID: 2,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Leipzig",
+          destination: "Bremen",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Nürnberg",
+          destination: "Munich",
+          status: "ASSIGNED",
+          UserID: 3,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Duisburg",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bochum",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Wuppertal",
+          status: "PICKED_UP",
+          UserID: 1,
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Bonn",
+          destination: "Munich",
+          status: "WAITING",
+          createdAt: new Date().toDateString(),
+          updatedAt: new Date().toDateString()
+        },
+        {
+          origin: "Dresden",
+          destination: "Mannheim",
           status: "WAITING",
           createdAt: new Date().toDateString(),
           updatedAt: new Date().toDateString()
