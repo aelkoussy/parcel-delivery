@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { Redirect } from "react-router";
 
-class LoginContainer extends Component {
+export class LoginContainer extends Component {
   state = {
     email: "",
     password: "",
@@ -30,7 +30,11 @@ class LoginContainer extends Component {
       default:
     }
 
-    if (this.props.parcels.length > 0 && this.props.bikers.length > 0) {
+    if (
+      this.props.parcels.length > 0 &&
+      this.props.bikers.length > 0 &&
+      this.props.role === "manager"
+    ) {
       return <Redirect to="/managers" />;
     }
 

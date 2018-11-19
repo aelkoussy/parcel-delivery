@@ -13,7 +13,7 @@ const handleAutoSelectValueChosen = value => {
   console.log(autoCompleteValue);
 };
 
-const ManagerLayout = props => {
+export const ManagerLayout = props => {
   // if the (parcel/bikers) array in state is empty, we will redirect to login page to login & load them
   if (props.parcelsArray.length === 0 || props.bikers.length === 0) {
     props.history.push("/");

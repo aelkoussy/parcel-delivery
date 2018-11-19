@@ -62,7 +62,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case actions.GET_PARCELS:
-      console.log(action);
       return { ...state, parcels: action.parcels };
 
     case actions.GET_BIKERS:

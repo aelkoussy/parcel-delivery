@@ -5,7 +5,7 @@ import Parcel from "../components/Parcel";
 import DateTime from "../components/UI/DateTimePicker";
 import * as actions from "../store/actions";
 
-const BikerLayout = props => {
+export const BikerLayout = props => {
   // if the parcel array in state is empty, we will redirect to login page to login & load them
   if (props.bikerParcels.length === 0) {
     props.history.push("/");
