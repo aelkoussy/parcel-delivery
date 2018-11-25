@@ -1,6 +1,6 @@
 //middlewares/jwt.js
 
-// this middleware only checks the jwt is valid, to decode it we should use the jsonwebtoken lib
+// this middleware only checks the jwt is valid, after validating it, you will find it in the ctx.state.user
 
 const koaJwt = require("koa-jwt");
 

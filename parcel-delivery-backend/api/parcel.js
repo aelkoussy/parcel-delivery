@@ -67,7 +67,7 @@ router.put("/parcel/assign", verifyJwt, async ctx => {
   };
 });
 
-// The assign parcel API , only bikers
+// The submit Pickup Timestamp API , only bikers
 router.put("/parcel/submitPickupTimestamp", verifyJwt, async ctx => {
   verifyRole(ctx, "biker");
   var request_body = ctx.request.body;
@@ -83,7 +83,7 @@ router.put("/parcel/submitPickupTimestamp", verifyJwt, async ctx => {
     parcel: parcel // sending the updated parcel in response
   };
 });
-// The assign parcel API , only bikers
+// The submit Delivery Timestamp API , only bikers
 router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async ctx => {
   verifyRole(ctx, "biker");
   var request_body = ctx.request.body;

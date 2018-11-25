@@ -17,17 +17,13 @@ module.exports = (sequelize, DataTypes) => {
         beforeCreate: user => {
           {
             user.password =
-              user.password && user.password != ""
-                ? bcrypt.hashSync(user.password, 10)
-                : "";
+              user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : "";
           }
         },
         beforeBulkCreate: user => {
           {
             user.password =
-              user.password && user.password != ""
-                ? bcrypt.hashSync(user.password, 10)
-                : "";
+              user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : "";
           }
         }
       }
