@@ -22,7 +22,7 @@ const store = createStore(
 );
 
 // this shall point to the baseURL of the node.js server
-axios.defaults.baseURL = process.env.BASE_URL && "http://localhost:5000";
+axios.defaults.baseURL = "http://localhost:5000";
 
 // using interceptor instead of header default to always use the latest jwt available
 axios.interceptors.request.use(
