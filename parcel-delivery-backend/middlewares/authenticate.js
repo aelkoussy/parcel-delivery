@@ -9,7 +9,7 @@ const db = require("../models/index");
 module.exports = async function(ctx) {
   var isPasswordOk;
   // getting the user record from DB to compare the password hash
-  await db.User.find({
+  await db.User.findOne({
     where: {
       email: ctx.request.body.email
     }
