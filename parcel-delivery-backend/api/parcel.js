@@ -9,7 +9,7 @@ const verifyRole = require("../middlewares/verifyRole");
 // here it is accessible only for manager role
 router.get("/parcel/:id", verifyJwt, async ctx => {
   verifyRole(ctx, "manager");
-  var parcel = await db.Parcel.findById(ctx.params.id);
+  var parcel = await db.Parcel.findByPk(ctx.params.id);
   if (parcel != null) {
     ctx.body = {
       parcel
@@ -59,7 +59,7 @@ router.put("/parcel/assign", verifyJwt, async ctx => {
     { where: { id: request_body.parcelID } }
   );
 
-  var parcel = await db.Parcel.findById(request_body.parcelID);
+  var parcel = await db.Parcel.findByPk(request_body.parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
@@ -76,7 +76,7 @@ router.put("/parcel/submitPickupTimestamp", verifyJwt, async ctx => {
     { where: { id: request_body.parcelID } }
   );
 
-  var parcel = await db.Parcel.findById(request_body.parcelID);
+  var parcel = await db.Parcel.findByPk(request_body.parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
@@ -92,7 +92,7 @@ router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async ctx => {
     { where: { id: request_body.parcelID } }
   );
 
-  var parcel = await db.Parcel.findById(request_body.parcelID);
+  var parcel = await db.Parcel.findByPk(request_body.parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
