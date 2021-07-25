@@ -102,7 +102,7 @@ router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async ctx => {
 
 // here it is accessible only for manager role
 // get all parcels
-router.get("/parcels/", verifyJwt, async ctx => {
+router.get("/parcels", verifyJwt, async ctx => {
   // we get access to the decoded jwt in ctx.state.user
   verifyRole(ctx, "manager");
   var parcels = await db.Parcel.findAll().then(parcels => {

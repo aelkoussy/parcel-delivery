@@ -42,7 +42,7 @@ router.post("/user/login/", authenticate, async ctx => {
 
 // accessible only for managers
 // gets all biker user data (selected fields only)
-router.get("/users/bikersData/", verifyJwt, async ctx => {
+router.get("/users/bikersData", verifyJwt, async ctx => {
   verifyRole(ctx, "manager");
   var bikers = await db.User.findAll({
     attributes: ["id", "firstName", "lastName", "phone", "email"],
