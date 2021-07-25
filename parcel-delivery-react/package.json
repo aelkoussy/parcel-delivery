@@ -44,5 +44,8 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint-plugin-react": "^7.24.0",
     "react-test-renderer": "^16.6.3"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
