@@ -13,7 +13,7 @@ module.exports = {
       }], {});
     */
 
-    // password is saloodo
+    // password is example
     return queryInterface.bulkInsert(
       "Users",
       [
@@ -21,9 +21,9 @@ module.exports = {
           firstName: "Finn",
           lastName: "Alexander",
           phone: "111-222-3333",
-          email: "Finn@saloodo.com",
+          email: "Finn@example.com",
           password:
-            "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C", // password is saloodo
+            "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C", // password is example
           role: "manager",
           createdAt: new Date().toDateString(),
           updatedAt: new Date().toDateString()
@@ -32,7 +32,7 @@ module.exports = {
           firstName: "Jan",
           lastName: "Christian",
           phone: "444-555-6666",
-          email: "Jan@saloodo.com",
+          email: "Jan@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -43,7 +43,7 @@ module.exports = {
           firstName: "Jonas",
           lastName: "Heinrich",
           phone: "444-555-6666",
-          email: "Jonas@saloodo.com",
+          email: "Jonas@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -54,7 +54,7 @@ module.exports = {
           firstName: "Walter",
           lastName: "Wilhelm",
           phone: "444-555-6666",
-          email: "Walter@saloodo.com",
+          email: "Walter@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -65,7 +65,7 @@ module.exports = {
           firstName: "Tom",
           lastName: "Sebastian",
           phone: "402-437-0001",
-          email: "Tom@saloodo.com",
+          email: "Tom@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -76,7 +76,7 @@ module.exports = {
           firstName: "Martin",
           lastName: "Thomas",
           phone: "402-437-0001",
-          email: "Martin@saloodo.com",
+          email: "Martin@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -87,7 +87,7 @@ module.exports = {
           firstName: "Daniel",
           lastName: "Peter",
           phone: "402-437-0001",
-          email: "Daniel@saloodo.com",
+          email: "Daniel@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -98,7 +98,7 @@ module.exports = {
           firstName: "Alexander",
           lastName: "Sebastian",
           phone: "402-437-0001",
-          email: "Alexander@saloodo.com",
+          email: "Alexander@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
@@ -109,7 +109,7 @@ module.exports = {
           firstName: "Sebastian",
           lastName: "Peter",
           phone: "402-437-0001",
-          email: "Sebastian@saloodo.com",
+          email: "Sebastian@example.com",
           password:
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",

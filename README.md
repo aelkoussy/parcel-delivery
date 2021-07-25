@@ -36,8 +36,8 @@ Please download the folder on your pc & then please do the following:
 
 ### `Enter the credentials:`
 
-1- For manager: Finn@saloodo.com , password: saloodo
-2- For biker: Jan@saloodo.com , password: saloodo
+1- For manager: Finn@example.com , password: example
+2- For biker: Jan@example.com , password: example
 
 Then please test the application & please tell me your feedback
 
