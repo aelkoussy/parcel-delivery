@@ -7,109 +7,114 @@ const verifyJwt = require("../middlewares/jwt");
 const verifyRole = require("../middlewares/verifyRole");
 
 // here it is accessible only for manager role
-router.get("/parcel/:id", verifyJwt, async ctx => {
+router.get("/parcel/:id", verifyJwt, async (ctx) => {
   verifyRole(ctx, "manager");
   var parcel = await db.Parcel.findByPk(ctx.params.id);
   if (parcel != null) {
     ctx.body = {
-      parcel
+      parcel,
     };
   } else {
     ctx.body = {
-      status: "notFound"
+      status: "notFound",
     };
   }
 });
 
 // here it is accessible only for manager role
 // inserting new parcel
-router.post("/parcel/", verifyJwt, async ctx => {
+router.post("/parcel/", verifyJwt, async (ctx) => {
   verifyRole(ctx, "manager");
-  var request_body = ctx.request.body;
+  const {
+    origin,
+    destination,
+    status,
+    // assignee,
+    UserID,
+  } = ctx.request.body;
   await db.Parcel.create({
-    origin: request_body.origin,
-    destination: request_body.destination,
-    status: request_body.status,
-    // assignee: request_body.assignee,
-    UserID: request_body.UserID
+    origin,
+    destination,
+    status,
+    // assignee,
+    UserID,
   })
-    .then(result => {
+    .then((result) => {
       console.log(result);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 
   ctx.body = {
     status: "success",
-    message: "parcel was added successfully!"
+    message: "parcel was added successfully!",
   };
 });
 
 // The assign parcel API , only managers
-router.put("/parcel/assign", verifyJwt, async ctx => {
+router.put("/parcel/assign", verifyJwt, async (ctx) => {
   verifyRole(ctx, "manager");
-  var request_body = ctx.request.body;
+  const { status, UserID, parcelID } = ctx.request.body;
   await db.Parcel.update(
     {
-      status: request_body.status,
-      // assignee: request_body.assignee,
-      UserID: request_body.UserID
+      status,
+      UserID,
     },
-    { where: { id: request_body.parcelID } }
+    { where: { id: parcelID } }
   );
 
-  var parcel = await db.Parcel.findByPk(request_body.parcelID);
+  const parcel = await db.Parcel.findByPk(parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
-    parcel: parcel // sending the updated parcel in response
+    parcel, // sending the updated parcel in response
   };
 });
 
 // The submit Pickup Timestamp API , only bikers
-router.put("/parcel/submitPickupTimestamp", verifyJwt, async ctx => {
+router.put("/parcel/submitPickupTimestamp", verifyJwt, async (ctx) => {
   verifyRole(ctx, "biker");
-  var request_body = ctx.request.body;
+  const { pickupTimestamp, parcelID } = ctx.request.body;
   await db.Parcel.update(
-    { status: "PICKED_UP", pickupTimestamp: request_body.pickupTimestamp },
-    { where: { id: request_body.parcelID } }
+    { status: "PICKED_UP", pickupTimestamp: pickupTimestamp },
+    { where: { id: parcelID } }
   );
 
-  var parcel = await db.Parcel.findByPk(request_body.parcelID);
+  const parcel = await db.Parcel.findByPk(parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
-    parcel: parcel // sending the updated parcel in response
+    parcel, // sending the updated parcel in response
   };
 });
 // The submit Delivery Timestamp API , only bikers
-router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async ctx => {
+router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async (ctx) => {
   verifyRole(ctx, "biker");
-  var request_body = ctx.request.body;
+  const { deliveryTimestamp, parcelID } = ctx.request.body;
   await db.Parcel.update(
-    { status: "DELIVERED", deliveryTimestamp: request_body.deliveryTimestamp },
-    { where: { id: request_body.parcelID } }
+    { status: "DELIVERED", deliveryTimestamp },
+    { where: { id: parcelID } }
   );
 
-  var parcel = await db.Parcel.findByPk(request_body.parcelID);
+  const parcel = await db.Parcel.findByPk(request_body.parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
-    parcel: parcel // sending the updated parcel in response
+    parcel, // sending the updated parcel in response
   };
 });
 
 // here it is accessible only for manager role
 // get all parcels
-router.get("/parcels", verifyJwt, async ctx => {
+router.get("/parcels", verifyJwt, async (ctx) => {
   // we get access to the decoded jwt in ctx.state.user
   verifyRole(ctx, "manager");
-  var parcels = await db.Parcel.findAll().then(parcels => {
+  const parcels = await db.Parcel.findAll().then((parcels) => {
     return parcels;
   });
   ctx.body = {
-    parcels
+    parcels,
   };
 });
 

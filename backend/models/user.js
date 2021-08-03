@@ -10,26 +10,30 @@ module.exports = (sequelize, DataTypes) => {
       phone: { type: DataTypes.STRING, allowNull: false },
       email: { type: DataTypes.STRING, allowNull: false },
       password: { type: DataTypes.STRING, allowNull: false },
-      role: { type: DataTypes.STRING, allowNull: false }
+      role: { type: DataTypes.STRING, allowNull: false },
     },
     {
       hooks: {
-        beforeCreate: user => {
+        beforeCreate: (user) => {
           {
             user.password =
-              user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : "";
+              user.password && user.password != ""
+                ? bcrypt.hashSync(user.password, 10)
+                : "";
           }
         },
-        beforeBulkCreate: user => {
+        beforeBulkCreate: (user) => {
           {
             user.password =
-              user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : "";
+              user.password && user.password != ""
+                ? bcrypt.hashSync(user.password, 10)
+                : "";
           }
-        }
-      }
+        },
+      },
     }
   );
-  User.associate = function(models) {
+  User.associate = function (models) {
     // associations can be defined here
   };
   return User;

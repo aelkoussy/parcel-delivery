@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         references: { model: "Users", key: "id" },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL"
+        onDelete: "SET NULL",
       },
       pickupTimestamp: DataTypes.STRING,
-      deliveryTimestamp: DataTypes.STRING
+      deliveryTimestamp: DataTypes.STRING,
     },
     {}
   ); // name of Target model // key in Target model that we're referencing
-  Parcel.associate = function(models) {
+  Parcel.associate = function (models) {
     // associations can be defined here
     Parcel.belongsTo(models.User);
   };

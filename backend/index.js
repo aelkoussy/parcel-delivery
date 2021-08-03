@@ -10,10 +10,10 @@ var router = new Router();
 var parcelRoutes = require("./api/parcel");
 var usersRoutes = require("./api/user");
 
-router.get("/hello", async ctx => {
+router.get("/hello", async (ctx) => {
   ctx.body = {
     status: "success",
-    message: "hello, world!"
+    message: "hello, world!",
   };
 });
 
