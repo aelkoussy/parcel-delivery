@@ -22,7 +22,7 @@ export const ManagerLayout = props => {
   // building the AutoSelect component that will be passed to the dialog
   const assignAutoSelectComponent = (
     <AutoSelect
-      autoSelectPlaceholder="Please select a biker, type to narrow down the names"
+      autoSelectPlaceholder="Click to select biker, type to narrow down names"
       suggestions={props.bikers}
       onValueChosen={handleAutoSelectValueChosen}
     />

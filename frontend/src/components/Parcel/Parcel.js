@@ -15,7 +15,6 @@ const Parcel = props => {
     props.status === "WAITING" && props.canAssignParcel ? (
       <FormDialog
         title="Assign parcel to biker"
-        description="Please type the biker name to assign this parcel to"
         buttonName="Assign now"
         inputComponent={props.assignAutoSelectComponent}
         dialogSubmitClicked={() => props.dialogSubmitClicked(props.id)}
