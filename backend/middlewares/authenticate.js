@@ -6,15 +6,15 @@ const bcrypt = require("bcrypt");
 
 const db = require("../models/index");
 
-module.exports = async function(ctx) {
+module.exports = async function (ctx) {
   var isPasswordOk;
   // getting the user record from DB to compare the password hash
   await db.User.findOne({
     where: {
-      email: ctx.request.body.email
-    }
+      email: ctx.request.body.email,
+    },
   })
-    .then(async result => {
+    .then(async (result) => {
       // here we compare the password supplied by user with the password in user record in DB
       console.log(result.password);
       isPasswordOk = await bcrypt.compare(
@@ -34,11 +34,11 @@ module.exports = async function(ctx) {
             role: result.role,
             firstName: result.firstName,
             lastName: result.lastName,
-            id: result.id
+            id: result.id,
           },
           "A very secret key", // this is just for testing, must use a strong key!!
           {
-            expiresIn: "60m"
+            expiresIn: "60m",
           }
         );
         ctx.body = {
@@ -47,17 +47,17 @@ module.exports = async function(ctx) {
           firstName: result.firstName,
           lastName: result.lastName,
           role: result.role,
-          isPasswordOk: isPasswordOk
+          isPasswordOk: isPasswordOk,
         };
       }
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
   if (isPasswordOk !== true) {
     ctx.status = 401;
     ctx.body = {
-      message: "Authentication failed"
+      message: "Authentication failed",
     };
   }
   return ctx;

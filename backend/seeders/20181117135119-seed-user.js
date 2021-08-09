@@ -26,7 +26,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C", // password is example
           role: "manager",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Jan",
@@ -37,7 +37,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Jonas",
@@ -48,7 +48,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Walter",
@@ -59,7 +59,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Tom",
@@ -70,7 +70,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Martin",
@@ -81,7 +81,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Daniel",
@@ -92,7 +92,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Alexander",
@@ -103,7 +103,7 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           firstName: "Sebastian",
@@ -114,11 +114,11 @@ module.exports = {
             "$2b$10$HUIH9eynI9nGOy.kNVwwR.A4oxH3ERsqA/1nDJz49rs9iB2u9Co3C",
           role: "biker",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
-        }
+          updatedAt: new Date().toDateString(),
+        },
       ],
       {
-        individualHooks: true
+        individualHooks: true,
       }
     );
   },
@@ -132,5 +132,5 @@ module.exports = {
       return queryInterface.bulkDelete('Person', null, {});
     */
     return queryInterface.bulkDelete("Users", null, {});
-  }
+  },
 };
