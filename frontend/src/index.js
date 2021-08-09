@@ -26,13 +26,13 @@ axios.defaults.baseURL = "http://localhost:5000";
 
 // using interceptor instead of header default to always use the latest jwt available
 axios.interceptors.request.use(
-  function(config) {
+  function (config) {
     config.headers = {
-      Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`
+      Authorization: `Bearer ${sessionStorage.getItem("jwtToken")}`,
     };
     return config;
   },
-  function(error) {
+  function (error) {
     return Promise.reject(error);
   }
 );

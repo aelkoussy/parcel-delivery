@@ -10,24 +10,24 @@ import PropTypes from "prop-types";
 import React from "react";
 import Select from "react-select";
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    height: 250
+    height: 250,
   },
   input: {
     display: "flex",
-    padding: 0
+    padding: 0,
   },
   valueContainer: {
     display: "flex",
     flexWrap: "wrap",
     flex: 1,
     alignItems: "center",
-    overflow: "hidden"
+    overflow: "hidden",
   },
   chip: {
-    margin: `${theme.spacing(0.5)}px ${theme.spacing(0.25)}px`
+    margin: `${theme.spacing(0.5)}px ${theme.spacing(0.25)}px`,
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -35,29 +35,29 @@ const styles = theme => ({
         ? theme.palette.grey[300]
         : theme.palette.grey[700],
       0.08
-    )
+    ),
   },
   noOptionsMessage: {
-    padding: `${theme.spacing()}px ${theme.spacing(2)}px`
+    padding: `${theme.spacing()}px ${theme.spacing(2)}px`,
   },
   singleValue: {
-    fontSize: 16
+    fontSize: 16,
   },
   placeholder: {
     position: "absolute",
     left: 2,
-    fontSize: 16
+    fontSize: 16,
   },
   paper: {
     position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing(),
     left: 0,
-    right: 0
+    right: 0,
   },
   divider: {
-    height: theme.spacing(2)
-  }
+    height: theme.spacing(2),
+  },
 });
 
 function NoOptionsMessage(props) {
@@ -86,8 +86,8 @@ function Control(props) {
           className: props.selectProps.classes.input,
           inputRef: props.innerRef,
           children: props.children,
-          ...props.innerProps
-        }
+          ...props.innerProps,
+        },
       }}
       {...props.selectProps.textFieldProps}
     />
@@ -101,7 +101,7 @@ function Option(props) {
       selected={props.isFocused}
       component="div"
       style={{
-        fontWeight: props.isSelected ? 500 : 400
+        fontWeight: props.isSelected ? 500 : 400,
       }}
       {...props.innerProps}
     >
@@ -160,19 +160,19 @@ const components = {
   Option,
   Placeholder,
   SingleValue,
-  ValueContainer
+  ValueContainer,
 };
 
 class AutoSelect extends React.Component {
   state = {
     single: null,
-    multi: null
+    multi: null,
   };
 
   // pass chosen value to parent component
   passChangeToParent = () => this.props.onValueChosen(this.state.single);
 
-  handleChange = name => value => {
+  handleChange = (name) => (value) => {
     this.setState({ [name]: value }, this.passChangeToParent);
   };
 
@@ -180,13 +180,13 @@ class AutoSelect extends React.Component {
     const { classes, theme } = this.props;
 
     const selectStyles = {
-      input: base => ({
+      input: (base) => ({
         ...base,
         color: theme.palette.text.primary,
         "& input": {
-          font: "inherit"
-        }
-      })
+          font: "inherit",
+        },
+      }),
     };
 
     return (
@@ -195,9 +195,9 @@ class AutoSelect extends React.Component {
           <Select
             classes={classes}
             styles={selectStyles}
-            options={this.props.suggestions.map(suggestion => ({
+            options={this.props.suggestions.map((suggestion) => ({
               value: suggestion.id, // we can map value here to id for example
-              label: suggestion.firstName + " " + suggestion.lastName
+              label: suggestion.firstName + " " + suggestion.lastName,
             }))}
             components={components}
             value={this.state.single}
@@ -214,7 +214,7 @@ AutoSelect.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   autoSelectPlaceholder: PropTypes.string.isRequired,
-  suggestions: PropTypes.array.isRequired
+  suggestions: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(AutoSelect);

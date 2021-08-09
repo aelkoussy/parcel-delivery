@@ -20,13 +20,13 @@ function renderInputComponent(inputProps) {
     <TextField
       fullWidth
       InputProps={{
-        inputRef: node => {
+        inputRef: (node) => {
           ref(node);
           inputRef(node);
         },
         classes: {
-          input: classes.input
-        }
+          input: classes.input,
+        },
       }}
       {...other}
     />
@@ -63,7 +63,7 @@ function getSuggestions(value, suggestions) {
 
   return inputLength === 0
     ? []
-    : suggestions.filter(suggestion => {
+    : suggestions.filter((suggestion) => {
         const keep =
           count < 5 &&
           suggestion.name.slice(0, inputLength).toLowerCase() === inputValue;
@@ -80,39 +80,39 @@ function getSuggestionValue(suggestion) {
   return suggestion.name;
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     height: 250,
-    flexGrow: 1
+    flexGrow: 1,
   },
   container: {
-    position: "relative"
+    position: "relative",
   },
   suggestionsContainerOpen: {
     position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing(),
     left: 0,
-    right: 0
+    right: 0,
   },
   suggestion: {
-    display: "block"
+    display: "block",
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: "none"
+    listStyleType: "none",
   },
   divider: {
-    height: theme.spacing(2)
-  }
+    height: theme.spacing(2),
+  },
 });
 
 class Autocomplete extends React.Component {
   state = {
     single: "",
     popper: "",
-    suggestions: []
+    suggestions: [],
   };
 
   // by Ahmed, get the suggestions array from the props.suggestions passed by the caller
@@ -120,23 +120,25 @@ class Autocomplete extends React.Component {
   handleSuggestionsFetchRequested = ({ value }) => {
     console.log(this.props.suggestions);
     this.setState({
-      suggestions: getSuggestions(value, this.props.suggestions)
+      suggestions: getSuggestions(value, this.props.suggestions),
     });
   };
 
   handleSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   };
 
   // added by Ahmed to pass chosen value to parent component
   passChangeToParent = () => this.props.onValueChosen(this.state.single);
 
-  handleChange = name => (event, { newValue }) => {
-    // by Ahmed: This shall return the chosen value here to the calling parent
-    this.setState({ [name]: newValue }, this.passChangeToParent);
-  };
+  handleChange =
+    (name) =>
+    (event, { newValue }) => {
+      // by Ahmed: This shall return the chosen value here to the calling parent
+      this.setState({ [name]: newValue }, this.passChangeToParent);
+    };
 
   render() {
     const { classes } = this.props;
@@ -147,7 +149,7 @@ class Autocomplete extends React.Component {
       onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested,
       onSuggestionsClearRequested: this.handleSuggestionsClearRequested,
       getSuggestionValue,
-      renderSuggestion
+      renderSuggestion,
     };
 
     return (
@@ -158,15 +160,15 @@ class Autocomplete extends React.Component {
             classes,
             placeholder: this.props.autocompleteLabel,
             value: this.state.single,
-            onChange: this.handleChange("single")
+            onChange: this.handleChange("single"),
           }}
           theme={{
             container: classes.container,
             suggestionsContainerOpen: classes.suggestionsContainerOpen,
             suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion
+            suggestion: classes.suggestion,
           }}
-          renderSuggestionsContainer={options => (
+          renderSuggestionsContainer={(options) => (
             <Paper {...options.containerProps} square>
               {options.children}
             </Paper>
@@ -180,7 +182,7 @@ class Autocomplete extends React.Component {
 Autocomplete.propTypes = {
   classes: PropTypes.object.isRequired,
   autocompleteLabel: PropTypes.string.isRequired,
-  suggestions: PropTypes.array.isRequired
+  suggestions: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(Autocomplete);

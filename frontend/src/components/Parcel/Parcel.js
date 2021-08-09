@@ -6,7 +6,7 @@ import React from "react";
 
 import FormDialog from "../UI/FormDialog";
 
-const Parcel = props => {
+const Parcel = (props) => {
   let AssignDialog = null;
 
   // Open a form & then dispatch the action

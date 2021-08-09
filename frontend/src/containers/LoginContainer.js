@@ -10,7 +10,7 @@ export class LoginContainer extends Component {
   state = {
     email: "",
     password: "",
-    valid: true // just to avoid displaying error message in the beginning, before login is submitted it is checked again
+    valid: true, // just to avoid displaying error message in the beginning, before login is submitted it is checked again
   };
 
   render() {
@@ -74,9 +74,9 @@ export class LoginContainer extends Component {
     );
   }
 
-  handleChange = name => event => {
+  handleChange = (name) => (event) => {
     this.setState({
-      [name]: event.target.value
+      [name]: event.target.value,
     });
   };
 
@@ -89,7 +89,7 @@ export class LoginContainer extends Component {
 
     validation
       ? this.setState({
-          valid: true
+          valid: true,
         })
       : this.setState({ valid: false });
 
@@ -99,18 +99,18 @@ export class LoginContainer extends Component {
   };
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     parcels: state.parcels,
     userRole: state.userRole,
     userID: state.userID,
     bikers: state.bikers,
     authDetails: state.authDetails,
-    role: state.role
+    role: state.role,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getParcels: () => {
       dispatch(actions.getParcelsAsync());
@@ -123,11 +123,8 @@ const mapDispatchToProps = dispatch => {
     },
     getBikerParcels: () => {
       dispatch(actions.getBikerParcelsAsync());
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
