@@ -20,7 +20,7 @@ module.exports = {
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Berlin",
@@ -28,14 +28,14 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Köln",
           destination: "Stuttgart",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dortmund",
@@ -43,14 +43,14 @@ module.exports = {
           status: "DELIVERED",
           UserID: 2,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Leipzig",
           destination: "Bremen",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Nürnberg",
@@ -58,21 +58,21 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 3,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Duisburg",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bochum",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
@@ -80,21 +80,21 @@ module.exports = {
           status: "PICKED_UP",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bonn",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
           destination: "Mannheim",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Berlin",
@@ -102,14 +102,14 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Köln",
           destination: "Stuttgart",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dortmund",
@@ -117,14 +117,14 @@ module.exports = {
           status: "DELIVERED",
           UserID: 2,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Leipzig",
           destination: "Bremen",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Nürnberg",
@@ -132,21 +132,21 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 3,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Duisburg",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bochum",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
@@ -154,21 +154,21 @@ module.exports = {
           status: "PICKED_UP",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bonn",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
           destination: "Mannheim",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Berlin",
@@ -176,14 +176,14 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Köln",
           destination: "Stuttgart",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dortmund",
@@ -191,14 +191,14 @@ module.exports = {
           status: "DELIVERED",
           UserID: 2,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Leipzig",
           destination: "Bremen",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Nürnberg",
@@ -206,21 +206,21 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 3,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Duisburg",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bochum",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
@@ -228,21 +228,21 @@ module.exports = {
           status: "PICKED_UP",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bonn",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
           destination: "Mannheim",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Berlin",
@@ -250,14 +250,14 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Köln",
           destination: "Stuttgart",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dortmund",
@@ -265,14 +265,14 @@ module.exports = {
           status: "DELIVERED",
           UserID: 2,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Leipzig",
           destination: "Bremen",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Nürnberg",
@@ -280,21 +280,21 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 3,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Duisburg",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bochum",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
@@ -302,21 +302,21 @@ module.exports = {
           status: "PICKED_UP",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bonn",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
           destination: "Mannheim",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dortmund",
@@ -324,14 +324,14 @@ module.exports = {
           status: "DELIVERED",
           UserID: 2,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Leipzig",
           destination: "Bremen",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Nürnberg",
@@ -339,21 +339,21 @@ module.exports = {
           status: "ASSIGNED",
           UserID: 3,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Duisburg",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bochum",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
@@ -361,29 +361,29 @@ module.exports = {
           status: "PICKED_UP",
           UserID: 1,
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Bonn",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Dresden",
           destination: "Mannheim",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
+          updatedAt: new Date().toDateString(),
         },
         {
           origin: "Chemnitz",
           destination: "Munich",
           status: "WAITING",
           createdAt: new Date().toDateString(),
-          updatedAt: new Date().toDateString()
-        }
+          updatedAt: new Date().toDateString(),
+        },
       ],
       {}
     );
@@ -399,5 +399,5 @@ module.exports = {
     */
 
     return queryInterface.bulkDelete("Parcels", null, {});
-  }
+  },
 };
