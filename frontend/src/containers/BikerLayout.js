@@ -5,24 +5,24 @@ import Parcel from "../components/Parcel/Parcel";
 import DateTime from "../components/UI/DateTimePicker";
 import * as actions from "../store/actions";
 
-export const BikerLayout = props => {
+export const BikerLayout = (props) => {
   // if the parcel array in state is empty, we will redirect to login page to login & load them
   if (props.bikerParcels.length === 0) {
     props.history.push("/");
   }
   const filteredParcels = props.bikerParcels.filter(
-    parcel => parcel.status === "ASSIGNED" || parcel.status === "PICKED_UP"
+    (parcel) => parcel.status === "ASSIGNED" || parcel.status === "PICKED_UP"
   );
 
   let pickupTime = new Date();
   let deliveryTime = new Date();
 
-  const pickupTimeChangedHandler = time => {
+  const pickupTimeChangedHandler = (time) => {
     pickupTime = time;
     console.log("from Biker: pickup time is:" + pickupTime);
   };
 
-  const deliveryTimeChangedHandler = time => {
+  const deliveryTimeChangedHandler = (time) => {
     pickupTime = time;
     console.log("from Biker: pickup time is:" + pickupTime);
   };
@@ -35,7 +35,7 @@ export const BikerLayout = props => {
     <DateTime onDateTimeChosen={deliveryTimeChangedHandler} />
   );
 
-  const dialogSubmitPickupTimeClickedHandler = parcelID => {
+  const dialogSubmitPickupTimeClickedHandler = (parcelID) => {
     // dispatch submitPickupTime action here with the time
     console.log(
       pickupTime + "is chosen for pickup time for parcel: " + parcelID
@@ -43,7 +43,7 @@ export const BikerLayout = props => {
 
     props.enterPickupTime(parcelID, pickupTime);
   };
-  const dialogSubmitDeliveryTimeClickedHandler = parcelID => {
+  const dialogSubmitDeliveryTimeClickedHandler = (parcelID) => {
     // dispatch submitDeliveryTime action here with the time
     console.log(
       deliveryTime + "is chosen for pickup time for parcel: " + parcelID
@@ -52,7 +52,7 @@ export const BikerLayout = props => {
     props.enterDeliveryTime(parcelID, deliveryTime);
   };
 
-  const parcelsToDisplay = filteredParcels.map(parcel => {
+  const parcelsToDisplay = filteredParcels.map((parcel) => {
     return (
       <div key={parcel.id}>
         <Parcel
@@ -83,17 +83,17 @@ export const BikerLayout = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     bikerParcels: state.parcels,
     authDetails: state.authDetails,
     firstName: state.userFirstName,
     role: state.role,
-    bikers: state.bikers
+    bikers: state.bikers,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     enterPickupTime: (parcelID, pickupTime) => {
       dispatch(actions.enterPickupTimeAsync(parcelID, pickupTime));
@@ -103,11 +103,8 @@ const mapDispatchToProps = dispatch => {
     },
     getBikerParcels: () => {
       dispatch(actions.getBikerParcelsAsync());
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BikerLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(BikerLayout);

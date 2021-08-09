@@ -9,7 +9,7 @@ export default class DateTime extends PureComponent {
   passChangeToParent = () =>
     this.props.onDateTimeChosen(this.state.selectedDate);
 
-  handleDateChange = date => {
+  handleDateChange = (date) => {
     this.setState({ selectedDate: date }, this.passChangeToParent);
   };
 

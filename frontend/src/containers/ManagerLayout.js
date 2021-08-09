@@ -8,12 +8,12 @@ import * as actions from "../store/actions";
 let autoCompleteValue;
 
 // here we keep track of the typed/chosen value in the autocomplete in a local variable to use on submit
-const handleAutoSelectValueChosen = value => {
+const handleAutoSelectValueChosen = (value) => {
   autoCompleteValue = value;
   console.log(autoCompleteValue);
 };
 
-export const ManagerLayout = props => {
+export const ManagerLayout = (props) => {
   // if the (parcel/bikers) array in state is empty, we will redirect to login page to login & load them
   if (props.parcelsArray.length === 0 || props.bikers.length === 0) {
     props.history.push("/");
@@ -29,10 +29,10 @@ export const ManagerLayout = props => {
   );
 
   // here this shall check that the chosen biker name match one of the biker names & dispatch the reducer action to assign to biker
-  const assignSubmitClickedHandler = parcelID => {
+  const assignSubmitClickedHandler = (parcelID) => {
     let chosenBiker =
       autoCompleteValue !== undefined && autoCompleteValue !== null
-        ? props.bikers.filter(biker => biker.id === autoCompleteValue.value)
+        ? props.bikers.filter((biker) => biker.id === autoCompleteValue.value)
         : [];
 
     // if he tries to submit with a name that is not in the bikers, we won't assign
@@ -45,9 +45,9 @@ export const ManagerLayout = props => {
     autoCompleteValue = null;
   };
 
-  let managerParcelList = props.parcelsArray.map(parcel => {
+  let managerParcelList = props.parcelsArray.map((parcel) => {
     const assignee = props.bikers.find(
-      biker => String(biker.id) === parcel.UserID
+      (biker) => String(biker.id) === parcel.UserID
     );
 
     return (
@@ -76,17 +76,17 @@ export const ManagerLayout = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     parcelsArray: state.parcels,
     userRole: state.userRole,
     userID: state.userID,
     bikers: state.bikers,
-    firstName: state.userFirstName
+    firstName: state.userFirstName,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     assignParcel: (parcelID, bikerID) => {
       dispatch(actions.assignParcelAsync(parcelID, bikerID));
@@ -96,10 +96,7 @@ const mapDispatchToProps = dispatch => {
     },
     getBikers: () => {
       dispatch(actions.getBikersAsync());
-    }
+    },
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ManagerLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(ManagerLayout);

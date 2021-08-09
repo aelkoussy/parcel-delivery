@@ -6,7 +6,7 @@ describe("Reducer:", () => {
     expect(reducer(undefined, {})).toEqual({
       parcels: [],
       bikers: [],
-      bikerParcels: []
+      bikerParcels: [],
     });
   });
 
@@ -19,11 +19,11 @@ describe("Reducer:", () => {
               id: 456,
               origin: "Berlin",
               destination: "Hamburg",
-              status: "WAITING"
-            }
+              status: "WAITING",
+            },
           ],
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.WRONG_ACTION,
@@ -33,8 +33,8 @@ describe("Reducer:", () => {
             origin: "Berlin",
             destination: "Hamburg",
             status: "ASSIGNED",
-            UserID: 1
-          }
+            UserID: 1,
+          },
         }
       )
     ).toEqual({
@@ -43,11 +43,11 @@ describe("Reducer:", () => {
           id: 456,
           origin: "Berlin",
           destination: "Hamburg",
-          status: "WAITING"
-        }
+          status: "WAITING",
+        },
       ],
       bikers: [],
-      bikerParcels: []
+      bikerParcels: [],
     });
   });
 
@@ -60,11 +60,11 @@ describe("Reducer:", () => {
               id: 123,
               origin: "Berlin",
               destination: "Hamburg",
-              status: "WAITING"
-            }
+              status: "WAITING",
+            },
           ],
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.ASSIGN_PARCEL,
@@ -74,8 +74,8 @@ describe("Reducer:", () => {
             origin: "Berlin",
             destination: "Hamburg",
             status: "ASSIGNED",
-            UserID: 1
-          }
+            UserID: 1,
+          },
         }
       )
     ).toEqual({
@@ -85,11 +85,11 @@ describe("Reducer:", () => {
           origin: "Berlin",
           destination: "Hamburg",
           status: "ASSIGNED",
-          UserID: 1
-        }
+          UserID: 1,
+        },
       ],
       bikers: [],
-      bikerParcels: []
+      bikerParcels: [],
     });
   });
 
@@ -102,11 +102,11 @@ describe("Reducer:", () => {
               id: 123,
               origin: "Berlin",
               destination: "Hamburg",
-              status: "WAITING"
-            }
+              status: "WAITING",
+            },
           ],
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.ENTER_PICKUP_TIMESTAMP,
@@ -117,8 +117,8 @@ describe("Reducer:", () => {
             destination: "Hamburg",
             status: "PICKED_UP",
             UserID: 1,
-            pickupTimestamp: "2018-11-19T00:48:49.304"
-          }
+            pickupTimestamp: "2018-11-19T00:48:49.304",
+          },
         }
       )
     ).toEqual({
@@ -129,11 +129,11 @@ describe("Reducer:", () => {
           destination: "Hamburg",
           status: "PICKED_UP",
           UserID: 1,
-          pickupTimestamp: "2018-11-19T00:48:49.304"
-        }
+          pickupTimestamp: "2018-11-19T00:48:49.304",
+        },
       ],
       bikers: [],
-      bikerParcels: []
+      bikerParcels: [],
     });
   });
   it("should update parcel delivery timestamp & status if it is id is loaded in state parcels array by saving the updated parcel recieved from API", () => {
@@ -145,11 +145,11 @@ describe("Reducer:", () => {
               id: 123,
               origin: "Berlin",
               destination: "Hamburg",
-              status: "PICKED_UP"
-            }
+              status: "PICKED_UP",
+            },
           ],
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.ENTER_DELIVERY_TIMESTAMP,
@@ -160,8 +160,8 @@ describe("Reducer:", () => {
             destination: "Hamburg",
             status: "DELIVERED",
             UserID: 1,
-            deliveryTimestamp: "2018-11-19T00:48:49.304"
-          }
+            deliveryTimestamp: "2018-11-19T00:48:49.304",
+          },
         }
       )
     ).toEqual({
@@ -172,11 +172,11 @@ describe("Reducer:", () => {
           destination: "Hamburg",
           status: "DELIVERED",
           UserID: 1,
-          deliveryTimestamp: "2018-11-19T00:48:49.304"
-        }
+          deliveryTimestamp: "2018-11-19T00:48:49.304",
+        },
       ],
       bikers: [],
-      bikerParcels: []
+      bikerParcels: [],
     });
   });
 
@@ -189,18 +189,18 @@ describe("Reducer:", () => {
           authDetails: {
             token: "secretToken",
             firstName: "Muller",
-            role: "manager"
-          }
+            role: "manager",
+          },
         }
       )
     ).toEqual({
       authDetails: {
         firstName: "Muller",
         role: "manager",
-        token: "secretToken"
+        token: "secretToken",
       },
       role: "manager",
-      userFirstName: "Muller"
+      userFirstName: "Muller",
     });
   });
   it("fill the state with parcels recieved from the API & override any parcel array in state", () => {
@@ -212,11 +212,11 @@ describe("Reducer:", () => {
               id: 123, // note how this shall disappear
               origin: "Berlin",
               destination: "Hamburg",
-              status: "WAITING"
-            }
+              status: "WAITING",
+            },
           ],
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.GET_PARCELS,
@@ -225,15 +225,15 @@ describe("Reducer:", () => {
               id: 982,
               origin: "Koln",
               destination: "Dusseldurf",
-              status: "WAITING"
+              status: "WAITING",
             },
             {
               id: 985,
               origin: "Koln",
               destination: "Dusseldurf",
-              status: "WAITING"
-            }
-          ]
+              status: "WAITING",
+            },
+          ],
         }
       )
     ).toEqual({
@@ -242,17 +242,17 @@ describe("Reducer:", () => {
           id: 982,
           origin: "Koln",
           destination: "Dusseldurf",
-          status: "WAITING"
+          status: "WAITING",
         },
         {
           id: 985,
           origin: "Koln",
           destination: "Dusseldurf",
-          status: "WAITING"
-        }
+          status: "WAITING",
+        },
       ],
       bikers: [],
-      bikerParcels: []
+      bikerParcels: [],
     });
   });
 
@@ -261,7 +261,7 @@ describe("Reducer:", () => {
       reducer(
         {
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.GET_BIKERS,
@@ -270,15 +270,15 @@ describe("Reducer:", () => {
               id: 982,
               origin: "Koln",
               destination: "Dusseldurf",
-              status: "WAITING"
+              status: "WAITING",
             },
             {
               id: 985,
               origin: "Koln",
               destination: "Dusseldurf",
-              status: "WAITING"
-            }
-          ]
+              status: "WAITING",
+            },
+          ],
         }
       )
     ).toEqual(
@@ -289,16 +289,16 @@ describe("Reducer:", () => {
             id: 982,
             origin: "Koln",
             destination: "Dusseldurf",
-            status: "WAITING"
+            status: "WAITING",
           },
           {
             id: 985,
             origin: "Koln",
             destination: "Dusseldurf",
-            status: "WAITING"
-          }
+            status: "WAITING",
+          },
         ],
-        bikerParcels: []
+        bikerParcels: [],
       }
     );
   });
@@ -312,11 +312,11 @@ describe("Reducer:", () => {
               id: 123,
               origin: "Berlin",
               destination: "Hamburg",
-              status: "WAITING"
-            }
+              status: "WAITING",
+            },
           ],
           bikers: [],
-          bikerParcels: []
+          bikerParcels: [],
         },
         {
           type: actions.GET_BIKER_PARCELS,
@@ -325,15 +325,15 @@ describe("Reducer:", () => {
               id: 982,
               origin: "Koln",
               destination: "Dusseldurf",
-              status: "WAITING"
+              status: "WAITING",
             },
             {
               id: 985,
               origin: "Koln",
               destination: "Dusseldurf",
-              status: "WAITING"
-            }
-          ]
+              status: "WAITING",
+            },
+          ],
         }
       )
     ).toEqual(
@@ -344,17 +344,17 @@ describe("Reducer:", () => {
             id: 982,
             origin: "Koln",
             destination: "Dusseldurf",
-            status: "WAITING"
+            status: "WAITING",
           },
           {
             id: 985,
             origin: "Koln",
             destination: "Dusseldurf",
-            status: "WAITING"
-          }
+            status: "WAITING",
+          },
         ],
         bikers: [],
-        bikerParcels: []
+        bikerParcels: [],
       }
     );
   });
@@ -369,8 +369,8 @@ describe("Reducer:", () => {
         destination: "Hamburg",
         status: "PICKED_UP",
         UserID: 1,
-        pickupTimestamp: "2018-11-19T00:48:49.304"
-      }
+        pickupTimestamp: "2018-11-19T00:48:49.304",
+      },
     };
     expect(
       actions.assignParcel(123, {
@@ -379,7 +379,7 @@ describe("Reducer:", () => {
         destination: "Hamburg",
         status: "PICKED_UP",
         UserID: 1,
-        pickupTimestamp: "2018-11-19T00:48:49.304"
+        pickupTimestamp: "2018-11-19T00:48:49.304",
       })
     ).toEqual(expectedAction);
   });

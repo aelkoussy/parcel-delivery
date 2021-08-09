@@ -7,7 +7,7 @@ const bikerParcels = [];
 const initialState = {
   parcels: parcelArray,
   bikers: bikerArray,
-  bikerParcels: bikerParcels
+  bikerParcels: bikerParcels,
 };
 
 // TODO add logged in user data once he login
@@ -17,40 +17,40 @@ const reducer = (state = initialState, action) => {
     case actions.ASSIGN_PARCEL:
       return {
         ...state,
-        parcels: state.parcels.map(parcel =>
+        parcels: state.parcels.map((parcel) =>
           parcel.id === action.parcelID
             ? {
                 ...parcel,
-                ...action.updatedParcel // getting the updated parcel from the API to make sure it was really updated in DB
+                ...action.updatedParcel, // getting the updated parcel from the API to make sure it was really updated in DB
               }
             : parcel
-        )
+        ),
       };
 
     case actions.ENTER_PICKUP_TIMESTAMP:
       return {
         ...state,
-        parcels: state.parcels.map(parcel =>
+        parcels: state.parcels.map((parcel) =>
           parcel.id === action.parcelID
             ? {
                 ...parcel,
-                ...action.updatedParcel // getting the updated parcel from the API to make sure it was really updated in DB
+                ...action.updatedParcel, // getting the updated parcel from the API to make sure it was really updated in DB
               }
             : parcel
-        )
+        ),
       };
 
     case actions.ENTER_DELIVERY_TIMESTAMP:
       return {
         ...state,
-        parcels: state.parcels.map(parcel =>
+        parcels: state.parcels.map((parcel) =>
           parcel.id === action.parcelID
             ? {
                 ...parcel,
-                ...action.updatedParcel // getting the updated parcel from the API to make sure it was really updated in DB
+                ...action.updatedParcel, // getting the updated parcel from the API to make sure it was really updated in DB
               }
             : parcel
-        )
+        ),
       };
 
     case actions.LOGIN:
@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         authDetails: action.authDetails,
         userFirstName: action.authDetails.firstName,
-        role: action.authDetails.role
+        role: action.authDetails.role,
       };
 
     case actions.GET_PARCELS:

@@ -13,14 +13,16 @@ export const assignParcel = (parcelID, updatedParcel) => {
 };
 
 export const assignParcelAsync = (parcelID, chosenBiker) => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .put("/parcel/assign", {
         parcelID: parcelID,
         UserID: chosenBiker.id,
-        status: "ASSIGNED"
+        status: "ASSIGNED",
       })
-      .then(response => dispatch(assignParcel(parcelID, response.data.parcel)))
+      .then((response) =>
+        dispatch(assignParcel(parcelID, response.data.parcel))
+      )
       .catch(console.log("Sorry, something went wrong"));
   };
 };
@@ -30,13 +32,13 @@ export const enterPickupTime = (parcelID, updatedParcel) => {
 };
 
 export const enterPickupTimeAsync = (parcelID, pickupTime) => {
-  return dispatch =>
+  return (dispatch) =>
     axios
       .put("/parcel/submitPickupTimestamp", {
         parcelID: parcelID,
-        pickupTimestamp: pickupTime
+        pickupTimestamp: pickupTime,
       })
-      .then(response =>
+      .then((response) =>
         dispatch(enterPickupTime(parcelID, response.data.parcel))
       )
       .catch(console.log("Sorry, something went wrong"));
@@ -46,13 +48,13 @@ export const enterDeliveryTime = (parcelID, updatedParcel) => {
 };
 
 export const enterDeliveryTimeAsync = (parcelID, deliveryTime) => {
-  return dispatch =>
+  return (dispatch) =>
     axios
       .put("/parcel/submitDeliveryTimestamp", {
         parcelID: parcelID,
-        deliveryTimestamp: deliveryTime
+        deliveryTimestamp: deliveryTime,
       })
-      .then(response =>
+      .then((response) =>
         dispatch(enterDeliveryTime(parcelID, response.data.parcel))
       )
       .catch(console.log("Sorry, something went wrong"));
@@ -61,62 +63,62 @@ export const enterDeliveryTimeAsync = (parcelID, deliveryTime) => {
 // TODO The getter actions below shall be called in the ManagerLayout & BikerLayout, when user is redirected after validation
 // & all requests to API shall include the jwt (except ONLY the login request call)
 
-export const getParcels = parcels => {
+export const getParcels = (parcels) => {
   return {
     type: GET_PARCELS,
-    parcels
+    parcels,
   };
 };
 
 export const getParcelsAsync = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .get("/parcels")
-      .then(response => dispatch(getParcels(response.data.parcels)))
+      .then((response) => dispatch(getParcels(response.data.parcels)))
       .catch(console.log("Sorry, something went wrong"));
   };
 };
 
-export const getBikers = bikers => {
+export const getBikers = (bikers) => {
   return { type: GET_BIKERS, bikers };
 };
 
 export const getBikersAsync = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .get("/users/bikersData")
-      .then(response => dispatch(getBikers(response.data.bikers)))
+      .then((response) => dispatch(getBikers(response.data.bikers)))
       .catch(console.log("Sorry, something went wrong"));
   };
 };
 
-export const getBikerParcels = bikerParcels => {
+export const getBikerParcels = (bikerParcels) => {
   return { type: GET_BIKER_PARCELS, bikerParcels };
 };
 
 export const getBikerParcelsAsync = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .get("/user/parcels")
-      .then(response => dispatch(getBikerParcels(response.data.parcels)))
+      .then((response) => dispatch(getBikerParcels(response.data.parcels)))
       .catch(console.log("Sorry, something went wrong"));
   };
 };
 
-export const login = authDetails => {
+export const login = (authDetails) => {
   sessionStorage.setItem("jwtToken", authDetails.token);
   return { type: LOGIN, authDetails };
 };
 
 export const loginAsync = (email, password) => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .post("/user/login/", {
         email: email,
-        password: password
+        password: password,
       })
       // response here contains token, firstName, lastName, role
-      .then(response => dispatch(login(response.data)))
+      .then((response) => dispatch(login(response.data)))
       .catch(console.log("Sorry, something went wrong"));
   };
 };
