@@ -10,6 +10,9 @@
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.21.1",
     "date-fns": "^2.23.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
     "react": "^16",
     "react-autosuggest": "^10.1.0",
     "react-dom": "^16",
@@ -47,5 +50,15 @@
   },
   "engines": {
     "node": "16.x"
-  }
+  },
+  "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+   "lint-staged": {
+       "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+         "prettier --write"
+       ]
+     }
 }
