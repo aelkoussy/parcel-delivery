@@ -11,7 +11,7 @@ export const BikerLayout = (props) => {
     props.history.push("/");
   }
   const filteredParcels = props.bikerParcels.filter(
-    (parcel) => parcel.status === "ASSIGNED" || parcel.status === "PICKED_UP"
+    (parcel) => parcel.status !== "DELIVERED"
   );
 
   let pickupTime = new Date();
