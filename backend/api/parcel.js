@@ -97,7 +97,7 @@ router.put("/parcel/submitDeliveryTimestamp", verifyJwt, async (ctx) => {
     { where: { id: parcelID } }
   );
 
-  const parcel = await db.Parcel.findByPk(request_body.parcelID);
+  const parcel = await db.Parcel.findByPk(parcelID);
   ctx.body = {
     status: "success",
     message: "parcel was assigned successfully!",
