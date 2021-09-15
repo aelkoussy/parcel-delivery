@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import Parcel from "../components/Parcel/Parcel";
@@ -6,6 +6,9 @@ import DateTime from "../components/UI/DateTimePicker";
 import * as actions from "../store/actions";
 
 export const BikerLayout = (props) => {
+  const [pickupTime, setPickupTime] = useState(new Date());
+  const [deliveryTime, setDeliveryTime] = useState(new Date());
+
   // if the parcel array in state is empty, we will redirect to login page to login & load them
   if (props.bikerParcels.length === 0) {
     props.history.push("/");
@@ -14,17 +17,14 @@ export const BikerLayout = (props) => {
     (parcel) => parcel.status !== "DELIVERED"
   );
 
-  let pickupTime = new Date();
-  let deliveryTime = new Date();
-
   const pickupTimeChangedHandler = (time) => {
-    pickupTime = time;
+    setPickupTime(time);
     console.log("from Biker: pickup time is:" + pickupTime);
   };
 
   const deliveryTimeChangedHandler = (time) => {
-    pickupTime = time;
-    console.log("from Biker: pickup time is:" + pickupTime);
+    setDeliveryTime(time);
+    console.log("from Biker: delivery time is:" + deliveryTime);
   };
   // here we assign the time choice component to be loaded in the parcel dialog on clicking the action button
 
@@ -46,7 +46,7 @@ export const BikerLayout = (props) => {
   const dialogSubmitDeliveryTimeClickedHandler = (parcelID) => {
     // dispatch submitDeliveryTime action here with the time
     console.log(
-      deliveryTime + "is chosen for pickup time for parcel: " + parcelID
+      deliveryTime + "is chosen for delivery time for parcel: " + parcelID
     );
 
     props.enterDeliveryTime(parcelID, deliveryTime);
