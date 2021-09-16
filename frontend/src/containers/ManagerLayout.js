@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import Parcel from "../components/Parcel/Parcel";
 import AutoSelect from "../components/UI/AutoSelect";
 import * as actions from "../store/actions";
 
-let autoCompleteValue;
-
-// here we keep track of the typed/chosen value in the autocomplete in a local variable to use on submit
-const handleAutoSelectValueChosen = (value) => {
-  autoCompleteValue = value;
-  console.log(autoCompleteValue);
-};
-
 export const ManagerLayout = (props) => {
+  const [autoCompleteValue, setAutoCompleteValue] = useState(null);
   // if the (parcel/bikers) array in state is empty, we will redirect to login page to login & load them
   if (props.parcelsArray.length === 0 || props.bikers.length === 0) {
     props.history.push("/");
   }
+
+  // here we keep track of the typed/chosen value in the autocomplete in the state to use on submit
+  const handleAutoSelectValueChosen = (value) => {
+    setAutoCompleteValue(value);
+  };
 
   // building the AutoSelect component that will be passed to the dialog
   const assignAutoSelectComponent = (
@@ -42,7 +40,7 @@ export const ManagerLayout = (props) => {
       : console.log("No valid biker chosen"); // TODO use snackbar notification here or a div
 
     // resetting the chosen value after dispatching the action, so that the chosen name won't stick & will be reset when dialog is closed
-    autoCompleteValue = null;
+    setAutoCompleteValue(null);
   };
 
   let managerParcelList = props.parcelsArray.map((parcel) => {
